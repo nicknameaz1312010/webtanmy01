@@ -7,6 +7,7 @@
 <link rel="icon" href="https://tanmygroup.com.vn/wp-content/uploads/2026/03/cropped-logo-ko-chu-scaled-1-32x32.png">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://unpkg.com/html5-qrcode" defer></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -29,9 +30,12 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   --shadow-card-hover:0 16px 48px -12px rgba(16,55,118,.1),0 4px 12px rgba(0,0,0,.04);
   --shadow-glass:0 8px 32px rgba(0,0,0,.04);
   --transition:.5s cubic-bezier(.22,.61,.36,1);
-  --gradient-gold:linear-gradient(135deg,#ffd41c,#f0c800,#ffd41c);
-  --gradient-blue:linear-gradient(135deg,#103776,#1a4a9e);
-  --gradient-dark:linear-gradient(135deg,#050f20,#0a2350);
+  --gradient-gold:linear-gradient(135deg,#ffd41c 0%,#f0c800 50%,#ffd41c 100%);
+  --gradient-blue-deep:linear-gradient(135deg,#0a2463 0%,#1a3a7a 30%,#103776 60%,#1a4a9e 100%);
+  --gradient-blue:linear-gradient(135deg,#103776 0%,#1a4a9e 100%);
+  --gradient-dark:linear-gradient(135deg,#050f20 0%,#0a2350 50%,#132d5e 100%);
+  --gradient-ambient:linear-gradient(180deg,rgba(16,55,118,.03) 0%,transparent 40%,transparent 60%,rgba(16,55,118,.03) 100%);
+  --gradient-card:linear-gradient(145deg,#fff 0%,#f8faff 100%);
   --bg:#eef1f5;
   --bg-alt:#e5e9ef;
   --text:#1e293b;
@@ -259,6 +263,12 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .btn-cta-alt{background:transparent!important;border:1.5px solid rgba(255,212,28,.5);color:var(--accent)!important;font-weight:600!important}
 .btn-cta-alt:hover{background:var(--accent)!important;color:var(--primary-darker)!important;border-color:var(--accent)!important}
+
+/* WARRANTY SCAN */
+.warranty-btns{display:flex;gap:10px;margin-top:4px}
+.warranty-btns .btn-modal-action{flex:1;justify-content:center;font-size:13px}
+.btn-scan{background:linear-gradient(135deg,#0a2463,#1a3a7a)!important}
+.btn-scan:hover{background:linear-gradient(135deg,#1a3a7a,#0a2463)!important;box-shadow:0 6px 20px rgba(10,36,99,.3)!important}
 
 /* TANK CALC MODAL */
 .mini-modal .modal-box{padding:32px}
@@ -813,7 +823,7 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
 <section class="section" id="about">
   <div class="container">
     <div class="about-wrap">
-      <div class="about-visual reveal reveal-delay-1">
+      <div class="about-visual reveal reveal-delay-1 parallax" data-parallax-speed="0.2">
         <div class="main-img">
           <img src="https://tanmygroup.com.vn/wp-content/uploads/2026/03/AVATA.png" alt="Về Tân Mỹ Group" loading="lazy">
         </div>
@@ -1408,7 +1418,11 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
     <h2 data-i18n="warranty_title"><i class="fas fa-shield-alt"></i> Tra cứu bảo hành</h2>
     <p data-i18n="warranty_desc">Nhập mã bảo hành hoặc số điện thoại đã đăng ký để tra cứu thông tin</p>
     <input type="text" id="warrantyInput" data-i18n-placeholder="warranty_input" placeholder="Nhập mã bảo hành / SĐT" onkeydown="if(event.key==='Enter')checkWarranty()">
-    <button class="btn-modal-action" onclick="checkWarranty()" data-i18n="warranty_btn"><i class="fas fa-search"></i> Tra cứu</button>
+    <div class="warranty-btns">
+      <button class="btn-modal-action" onclick="checkWarranty()" data-i18n="warranty_btn"><i class="fas fa-search"></i> Tra cứu</button>
+      <button class="btn-modal-action btn-scan" onclick="openQRScanner()"><i class="fas fa-camera"></i> Quét QR</button>
+    </div>
+    <div class="qr-reader" id="qrReader" style="display:none;margin:12px 0;border-radius:12px;overflow:hidden"></div>
     <div class="calc-result" id="warrantyResult">
       <div class="num"><i class="fas fa-check-circle" style="color:#28a745"></i></div>
       <div class="lbl" id="warrantyText" style="font-size:14px;color:#333;margin-top:8px" data-i18n="warranty_text_init">Sản phẩm của bạn còn hạn bảo hành đến 05/2028</div>
@@ -1494,7 +1508,8 @@ function toggleMenu(){document.getElementById('mainNav').classList.toggle('open'
 document.querySelectorAll('#mainNav .menu-item-has-children>a').forEach(function(e){e.addEventListener('click',function(t){if(window.innerWidth<=767){t.preventDefault();this.parentElement.classList.toggle('open')}})})
 
 // Hero Slider
-(function(){var s=document.querySelectorAll('.hero-slide'),d=document.querySelectorAll('.hero-dots .dot'),c=0,iv;function go(n){s.forEach(function(e){e.classList.remove('active')});d.forEach(function(e){e.classList.remove('active')});s[n].classList.add('active');d[n].classList.add('active');c=n}d.forEach(function(dot){dot.addEventListener('click',function(){go(parseInt(this.getAttribute('data-slide')));clearInterval(iv);iv=setInterval(au,5000)})});function au(){go((c+1)%s.length)}iv=setInterval(au,5000)})()
+(function(){var s=document.querySelectorAll('.hero-slide'),d=document.querySelectorAll('.hero-dots .dot'),c=0,iv;window.heroGo=function(n){if(n<0||n>=s.length)return;s.forEach(function(e){e.classList.remove('active')});d.forEach(function(e){e.classList.remove('active')});s[n].classList.add('active');d[n].classList.add('active');c=n;clearInterval(iv);iv=setInterval(au,5000)};function au(){window.heroGo((c+1)%s.length)}d.forEach(function(dot){dot.addEventListener('click',function(){window.heroGo(parseInt(this.getAttribute('data-slide')))})});iv=setInterval(au,5000);if(s.length)window.heroGo(0)})()
+function heroSlide(dir){var dots=document.querySelectorAll('.hero-dots .dot'),c=0;dots.forEach(function(d,i){if(d.classList.contains('active'))c=i});window.heroGo((c+dir+dots.length)%dots.length)}
 
 // Product Card Image Hover Swap
 document.querySelectorAll('.prod-card').forEach(function(card){var img=card.querySelector('.prod-img img');var src1=card.getAttribute('data-img');var src2=card.getAttribute('data-img2');if(img&&src1&&src2){card.addEventListener('mouseenter',function(){img.src=src2});card.addEventListener('mouseleave',function(){img.src=src1})}})
@@ -1581,11 +1596,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener
 
 // === NEW SECTIONS (v6) ===
 
-// Hero Arrows
-var heroIdx=0;var heroImgs=['https://tanmygroup.com.vn/wp-content/uploads/2026/05/bon-Photoroom.png','https://tanmygroup.com.vn/wp-content/uploads/2025/09/may_nang-luong-mat-troi-1.jpg','https://tanmygroup.com.vn/wp-content/uploads/2026/05/septicc-Photoroom.png'];var heroTitles=['Sản phẩm <span class=&quot;highlight&quot;>chất lượng cao</span>','Năng lượng <span class=&quot;highlight&quot;>xanh</span> cho mọi nhà','Giải pháp <span class=&quot;highlight&quot;>toàn diện</span> cho công trình'];function heroSlide(d){var dots=document.querySelectorAll('.hero-dots .dot'),len=dots.length;heroIdx=(heroIdx+d+len)%len;dots.forEach(function(d,i){d.classList.toggle('active',i===heroIdx)});var bg=document.querySelector('.hero-bg');if(bg)bg.style.transform='scale(1.0'+heroIdx+')';var heroTitle=document.querySelector('.hero-content h1');if(heroTitle)heroTitle.innerHTML=heroTitles[heroIdx]}
-document.querySelectorAll('.hero-dots .dot').forEach(function(d){d.addEventListener('click',function(){var idx=parseInt(this.getAttribute('data-slide'))||0;heroIdx=idx;var dots=document.querySelectorAll('.hero-dots .dot');dots.forEach(function(d,i){d.classList.toggle('active',i===idx)});var heroTitle=document.querySelector('.hero-content h1');if(heroTitle)heroTitle.innerHTML=heroTitles[idx]})})
-setInterval(function(){heroSlide(1)},6000)
-
 // FAQ Toggle
 function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open')});if(!isOpen)item.classList.add('open')}
 
@@ -1599,6 +1609,16 @@ function openQuote(card){var name=card.getAttribute('data-name')||'';var code=ca
 function openTankCalc(){document.getElementById('tankModal').classList.add('open');document.body.style.overflow='hidden';calcTankSize()}
 function closeTankCalc(){document.getElementById('tankModal').classList.remove('open');document.body.style.overflow=''}
 function calcTankSize(){var people=parseInt(document.getElementById('tankPeople').value);var purpose=document.getElementById('tankPurpose').value;var base;if(purpose==='sinhhoat'){var map={1:150,2:300,3:500,4:750,5:1000,6:1500,7:2000,8:3000};base=map[people]||1500}else if(purpose==='kinhdoanh'){var map={1:300,2:500,3:750,4:1000,5:1500,6:2000,7:3000,8:5000};base=map[people]||3000}else{var map={1:500,2:750,3:1000,4:1500,5:2000,6:3000,7:5000,8:10000};base=map[people]||5000}document.getElementById('tankSize').textContent=base.toLocaleString()+'L';var descs={sinhhoat:'Phù hợp cho nhu cầu sinh hoạt hàng ngày. Đủ nước cho tắm giặt, nấu ăn và dự trữ.',kinhdoanh:'Phù hợp cho kinh doanh dịch vụ. Đảm bảo đủ nước cho nhà hàng, khách sạn nhỏ.',congtrinh:'Phù hợp cho công trình và nhà xưởng. Đáp ứng nhu cầu nước quy mô lớn.'};document.getElementById('tankDesc').textContent=descs[purpose]||'';document.getElementById('tankResult').style.display='block'}
+
+// QR Warranty Scanner
+var qrScannerInstance=null;function openQRScanner(){var el=document.getElementById('qrReader');if(!el||typeof Html5Qrcode==='undefined'){alert('QR Scanner chưa sẵn sàng. Vui lòng thử lại sau.');return}if(qrScannerInstance){qrScannerInstance.clear();qrScannerInstance=null}el.style.display='block';try{qrScannerInstance=new Html5Qrcode('qrReader');qrScannerInstance.start({facingMode:'environment'},{fps:10,qrbox:250},function(code){document.getElementById('warrantyInput').value=code;closeQRScanner();checkWarranty()},function(err){})}catch(e){el.style.display='none';alert('Không thể mở camera. Vui lòng kiểm tra quyền truy cập.')}}
+function closeQRScanner(){var el=document.getElementById('qrReader');if(el)el.style.display='none';if(qrScannerInstance){setTimeout(function(){try{qrScannerInstance.clear();qrScannerInstance.stop()}catch(e){}qrScannerInstance=null},300)}}
+
+// Parallax Effect
+(function(){var els=document.querySelectorAll('.parallax');if(!els.length)return;window.addEventListener('scroll',function(){var sy=window.scrollY||document.documentElement.scrollTop;els.forEach(function(el){var r=el.getBoundingClientRect(),s=el.getAttribute('data-parallax-speed')||0.3,c=window.innerHeight;if(r.top<c&&r.bottom>0){var o=1-r.top/c;el.style.transform='translateY('+(o-0.5)*s*60+'px)'}})})})()
+
+// Enhanced Gradient overlay on sections
+(function(){document.querySelectorAll('.section-alt').forEach(function(s){if(!s.querySelector('.gradient-ambient')){var d=document.createElement('div');d.className='gradient-ambient';d.style.cssText='position:absolute;inset:0;background:var(--gradient-ambient);pointer-events:none';s.appendChild(d)}})})()
 </script>
 </body>
 </html>
