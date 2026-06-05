@@ -581,6 +581,42 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
 /* Scroll Progress Bar */
 .scroll-progress{position:fixed;top:0;left:0;height:2.5px;background:var(--gradient-gold);background-size:200% auto;z-index:10001;width:0;transition:width .1s;animation:gradientShine 2s ease-in-out infinite;box-shadow:0 0 10px rgba(255,212,28,.25)}
 
+/* AI Chatbot */
+.chat-btn{position:fixed;bottom:28px;right:28px;width:56px;height:56px;border-radius:50%;background:var(--gradient-blue);color:#fff;border:none;font-size:24px;cursor:pointer;z-index:9999;box-shadow:0 4px 20px rgba(16,55,118,.35);transition:all .3s;display:flex;align-items:center;justify-content:center}
+.chat-btn:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(16,55,118,.45)}
+.chat-btn .chat-badge{position:absolute;top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:#f44336;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(244,67,54,.4)}
+.chat-panel{position:fixed;bottom:96px;right:28px;width:380px;max-height:560px;background:#fff;border-radius:16px;box-shadow:0 16px 64px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.05);z-index:9998;display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(0,0,0,.04);animation:chatIn .35s ease}
+.chat-panel.open{display:flex}
+@keyframes chatIn{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-head{background:var(--gradient-blue-deep,var(--gradient-blue));color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.chat-head .ch-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.chat-head .ch-info{flex:1}
+.chat-head .ch-name{font-size:14px;font-weight:700}
+.chat-head .ch-status{font-size:11px;color:rgba(255,255,255,.55)}
+.chat-head .ch-close{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.chat-head .ch-close:hover{background:rgba(255,255,255,.15)}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px 16px 0;display:flex;flex-direction:column;gap:10px;min-height:280px;max-height:380px;scroll-behavior:smooth}
+.chat-msgs .msg{max-width:85%;padding:11px 14px;border-radius:14px;font-size:13.5px;line-height:1.6;animation:msgIn .3s ease;word-wrap:break-word}
+.chat-msgs .msg.bot{align-self:flex-start;background:#f0f2f5;color:#1e293b;border-bottom-left-radius:4px}
+.chat-msgs .msg.user{align-self:flex-end;background:var(--gradient-blue);color:#fff;border-bottom-right-radius:4px}
+.chat-msgs .msg.typing{align-self:flex-start;background:#f0f2f5;padding:12px 18px;display:flex;gap:4px;align-items:center}
+.chat-msgs .msg.typing span{width:6px;height:6px;border-radius:50%;background:#94a3b8;animation:typingDot 1.4s infinite}
+.chat-msgs .msg.typing span:nth-child(2){animation-delay:.2s}
+.chat-msgs .msg.typing span:nth-child(3){animation-delay:.4s}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes typingDot{0%,60%,100%{opacity:.3;transform:scale(.7)}30%{opacity:1;transform:scale(1)}}
+.chat-foot{display:flex;align-items:center;gap:8px;padding:12px 16px;border-top:1px solid #eef1f5}
+.chat-foot input{flex:1;border:none;outline:none;padding:10px 14px;border-radius:24px;background:#f0f2f5;font-size:13.5px;color:#1e293b;font-family:inherit}
+.chat-foot input::placeholder{color:#94a3b8}
+.chat-foot button{width:38px;height:38px;border-radius:50%;background:var(--gradient-blue);color:#fff;border:none;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.chat-foot button:hover{transform:scale(1.08)}
+.chat-foot button:disabled{opacity:.4;cursor:default;transform:none}
+.chat-quick{display:flex;flex-wrap:wrap;gap:6px;padding:8px 16px;border-top:1px solid #eef1f5}
+.chat-quick button{font-size:11.5px;padding:6px 12px;border-radius:14px;border:1px solid #dce0e8;background:#f8f9fc;color:#475569;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:inherit}
+.chat-quick button:hover{border-color:var(--primary);color:var(--primary);background:#eef3fa}
+
+@media(max-width:600px){.chat-panel{width:calc(100vw - 32px);right:16px;bottom:84px;max-height:calc(100vh - 180px);border-radius:12px}.chat-msgs{min-height:200px;max-height:calc(100vh - 280px)}.chat-btn{width:48px;height:48px;font-size:20px;bottom:20px;right:20px}}
+
 /* Hero Particles */
 .hero-particle{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(255,212,28,.2);pointer-events:none;animation:particleFloat var(--dur,8s) ease-in-out infinite;opacity:0}
 .hero-particle:nth-child(2){width:4px;height:4px;background:rgba(255,255,255,.08);--dur:11s;top:20%;left:10%;animation-delay:-3s}
@@ -1618,7 +1654,34 @@ function closeQRScanner(){var el=document.getElementById('qrReader');if(el)el.st
 (function(){var els=document.querySelectorAll('.parallax');if(!els.length)return;window.addEventListener('scroll',function(){var sy=window.scrollY||document.documentElement.scrollTop;els.forEach(function(el){var r=el.getBoundingClientRect(),s=el.getAttribute('data-parallax-speed')||0.3,c=window.innerHeight;if(r.top<c&&r.bottom>0){var o=1-r.top/c;el.style.transform='translateY('+(o-0.5)*s*60+'px)'}})})})()
 
 // Enhanced Gradient overlay on sections
-(function(){document.querySelectorAll('.section-alt').forEach(function(s){if(!s.querySelector('.gradient-ambient')){var d=document.createElement('div');d.className='gradient-ambient';d.style.cssText='position:absolute;inset:0;background:var(--gradient-ambient);pointer-events:none';s.appendChild(d)}})})()
+(function(){document.querySelectorAll('.section-alt').forEach(function(s){if(!s.querySelector('.gradient-ambient')){var d=document.createElement('div');d.className='gradient-ambient';d.style.cssText='position:absolute;inset:0;background:var(--gradient-ambient);pointer-events:none';s.appendChild(d)}})})();
+
+// AI Chatbot
+(function(){var kb={greeting:['chào','hi','hello','xin chào','helo'],prices:['giá','bao nhiêu tiền','bảng giá','cost','price','chi phí'],tank_inox:['bồn nước inox','bon nuoc','bồn inox','inox tank','steel tank'],tank_plastic:['bồn nhựa','bon nhua','plastic tank','nhựa'],septic:['bể tự hoại','be tu hoai','septic','bể phốt','be phot'],solar:['năng lượng mặt trời','nang luong','nlmt','solar','máy nước nóng','may nuoc nong NLMT','may NLMT'],sink:['chậu rửa','chau rua','sink','bồn rửa','bon rua'],aluminum:['nhôm','nhom','aluminum','nhôm định hình','nhom dinh hinh','zava'],warranty:['bảo hành','bao hanh','warranty','bảo trì','bao tri'],install:['lắp đặt','lap dat','install','thi công','thi cong'],distributor:['đại lý','dai ly','distributor','mua ở đâu','mua o dau','cửa hàng','cua hang','showroom'],contact:['liên hệ','lien he','contact','điện thoại','dien thoai','số điện thoại','so dien thoai','hotline','email','địa chỉ','dia chi','address'],capacity:['dung tích','dung tich','capacity','lít','lit','l','bao nhiêu lít'],steel:['inox 304','inox','rust','rỉ sét','ri set','chống rỉ','chong ri'],pressure:['áp lực','ap luc','pressure','bơm tăng áp','bom tang ap','pump'],iron_water:['nước nhiễm phèn','nuoc nhiem phen','phèn','phen','nước giếng','nuoc gieng','well water']};var ans={greeting:'Chào bạn! Tôi là trợ lý tư vấn của Tân Mỹ Group. Bạn cần tìm hiểu về sản phẩm nào? (bồn nước inox, bồn nhựa, bể tự hoại, máy NLMT, chậu rửa, nhôm định hình...)',greeting2:'<b>Bạn có thể hỏi tôi:</b><br>• "Bồn nước inox có bị rỉ không?"<br>• "Máy NLMT giá bao nhiêu?"<br>• "Mua ở đâu?"<br>• "Bảo hành thế nào?"',prices:'Giá sản phẩm Tân Mỹ phụ thuộc vào chủng loại, dung tích và kích thước. Vui lòng cho tôi biết bạn quan tâm đến sản phẩm nào (bồn nước inox, bồn nhựa, máy NLMT...) để tôi báo giá chi tiết. Hoặc bạn có thể gọi <b>0123 456 789</b> để được báo giá nhanh nhất.',tank_inox:'<b>Bồn nước Inox Tân Mỹ</b><br>• Chất liệu: Inox 304 cao cấp, chống rỉ sét<br>• Dung tích: 100L - 5000L<br>• Bảo hành: 5 năm chính hãng<br>• Phù hợp mọi gia đình<br>• Van phao nhập khẩu<br><br><i>Gợi ý: Dùng công cụ "Tính bồn nước" (nút vàng bên dưới) để chọn dung tích phù hợp.</i>',tank_plastic:'<b>Bồn nhựa đa năng Tân Mỹ</b><br>• Chất liệu: Nhựa nguyên sinh nguyên chất<br>• An toàn cho nước sinh hoạt<br>• Đạt chuẩn QCVN 12-1:2011/BYT<br>• Bền bỉ dưới mọi thời tiết<br>• Đa dạng dung tích, giá thành hợp lý',septic:'<b>Bể tự hoại Septic Tân Mỹ</b><br>• Công nghệ 3 ngăn hiện đại<br>• Đạt chuẩn QCVN<br>• Không thấm dò rỉ<br>• Lắp đặt nhanh chóng<br>• Bảo hành 3 năm',solar:'<b>Máy nước nóng NLMT Tân Mỹ</b><br>• Ống chân không công nghệ cao<br>• Tiết kiệm đến 90% điện năng<br>• Tuổi thọ 15+ năm<br>• Hoạt động tốt cả ngày râm<br>• Tự động bơm tuần hoàn<br>• Bảo hành 5 năm<br><br><i>Dùng công cụ "Tính tiết kiệm" để xem bạn tiết kiệm được bao nhiêu tiền điện mỗi tháng!</i>',sink:'<b>Chậu rửa inox Lucky Tân Mỹ</b><br>• Inox 304 dày sáng bóng<br>• Thiết kế sang trọng hiện đại<br>• Dễ vệ sinh, chống bám bẩn<br>• Lắp đặt âm dương linh hoạt<br>• Nhiều kích thước<br>• Bảo hành 3 năm',aluminum:'<b>Nhôm thanh định hình ZAVA - Tân Mỹ</b><br>• Hợp kim cao cấp<br>• Đa dạng mẫu mã kích thước<br>• Chất lượng xuất khẩu<br>• Chống oxy hóa<br>• Ứng dụng: cửa nhôm, vách ngăn, mặt dựng công trình<br><br><i>📥 Tải catalogue nhôm định hình để xem đầy đủ quy cách kỹ thuật.</i>',warranty:'<b>Chính sách bảo hành Tân Mỹ</b><br>• Bồn nước inox: 5 năm<br>• Máy nước nóng NLMT: 5 năm<br>• Bồn nhựa: 3 năm<br>• Bể tự hoại: 3 năm<br>• Chậu rửa inox: 3 năm<br><br>Bạn có thể tra cứu bảo hành ngay trên website (nhập mã bảo hành hoặc SĐT) hoặc quét mã QR trên sản phẩm.',install:'<b>Lắp đặt sản phẩm Tân Mỹ</b><br>• Đội ngũ kỹ thuật chuyên nghiệp<br>• Hỗ trợ lắp đặt tận nơi<br>• Miễn phí vận chuyển bán kính 100km<br>• Thời gian lắp đặt nhanh chóng<br>• Bảo trì định kỳ<br><br>Liên hệ 0123 456 789 để đặt lịch lắp đặt.',distributor:'<b>Hệ thống đại lý Tân Mỹ</b><br>• Hơn 500 đại lý trên toàn quốc<br>• Miền Bắc: 200+ đại lý (Hà Nội, Hải Phòng, Thanh Hóa...)<br>• Miền Trung: 120+ đại lý (Đà Nẵng, Huế, Nha Trang...)<br>• Miền Nam: 180+ đại lý (TP.HCM, Cần Thơ, Biên Hòa...)<br><br><i>📍 Xem chi tiết tại mục "Mạng lưới đại lý" trên website.</i>',contact:'<b>Thông tin liên hệ Tân Mỹ Group</b><br>🏢 77 Lê Văn Hưu, Hai Bà Trưng, Hà Nội<br>📞 0123 456 789<br>📧 vanphongcongty@tanmygroup.com.vn<br>🕐 Thứ 2 - Thứ 7: 7:30 - 17:30',capacity:'Bồn nước Tân Mỹ có đa dạng dung tích từ 100L đến 5000L. Gia đình 2-3 người thường dùng 300-500L, 4-5 người dùng 500-750L. Bạn dùng công cụ <b>"Chọn bồn nước phù hợp"</b> (nút Tính bồn nước) để được gợi ý chính xác nhé!',steel:'Inox 304 là thép không gỉ chất lượng cao, có khả năng chống rỉ sét vượt trội. Nước nhiễm phèn nhẹ vẫn dùng được bồn inox 304 Tân Mỹ bình thường. Tuy nhiên nếu nước nhiễm phèn nặng hoặc nhiễm mặn, bạn nên dùng bồn nhựa để đảm bảo độ bền tối đa.',pressure:'Máy nước nóng NLMT Tân Mỹ hoạt động tốt với áp lực nước từ 1.5 bar trở lên. Nếu áp lực nước yếu (nhà cao tầng, cuối đường ống), bạn nên lắp thêm bơm tăng áp. Liên hệ 0123 456 789 để được kỹ thuật viên tư vấn chi tiết cho công trình của bạn.',iron_water:'<b>Nước nhiễm phèn dùng bồn gì?</b><br>• Nếu phèn nhẹ: Bồn inox 304 Tân Mỹ vẫn dùng tốt<br>• Nếu phèn nặng/nhiễm mặn: Nên dùng bồn nhựa đa năng Tân Mỹ (nhựa nguyên sinh, an toàn, không bị ảnh hưởng bởi hóa chất)<br><br>👉 Bạn có thể kết hợp: Lọc phèn đầu nguồn + bồn inox 304 để đạt độ bền cao nhất.'};function match(text,keys){var t=text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');for(var i=0;i<keys.length;i++){var k=keys[i].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');if(t.indexOf(k)>-1)return true}return false}function getReply(text){var t=text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');var found=[];for(var key in kb){if(kb.hasOwnProperty(key)&&match(t,kb[key]))found.push(key)}if(found.length===0)return null;if(found.indexOf('greeting')>-1)return ans.greeting+'<br><br>'+ans.greeting2;var priority=['iron_water','pressure','steel','capacity','install','warranty','prices','distributor','contact','tank_inox','tank_plastic','septic','solar','sink','aluminum'];for(var p=0;p<priority.length;p++){if(found.indexOf(priority[p])>-1)return ans[priority[p]]}return ans[found[0]]}var btn=document.getElementById('chatBtn'),panel=document.getElementById('chatPanel'),msgs=document.getElementById('chatMsgs'),input=document.getElementById('chatInput'),send=document.getElementById('chatSend'),quick=document.getElementById('chatQuick');var isOpen=false,isFirst=true;function toggleChat(){isOpen=!isOpen;panel.classList.toggle('open',isOpen);if(isOpen&&isFirst){isFirst=false;setTimeout(function(){addBotMsg(ans.greeting);setTimeout(function(){addBotMsg(ans.greeting2)},600)},400)}if(isOpen)input.focus()}function addBotMsg(html){var d=document.createElement('div');d.className='msg bot';d.innerHTML=html;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}function addUserMsg(text){var d=document.createElement('div');d.className='msg user';d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}function showTyping(){var d=document.createElement('div');d.className='msg typing';d.id='typingInd';d.innerHTML='<span></span><span></span><span></span>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}function hideTyping(){var e=document.getElementById('typingInd');if(e)e.remove()}function sendMsg(){var text=input.value.trim();if(!text)return;addUserMsg(text);input.value='';send.disabled=true;showTyping();setTimeout(function(){hideTyping();var reply=getReply(text);if(reply){addBotMsg(reply)}else{addBotMsg('Xin lỗi, tôi chưa hiểu câu hỏi của bạn. Bạn có thể thử hỏi:<br><br>• "Bồn nước inox giá bao nhiêu?"<br>• "Bảo hành thế nào?"<br>• "Máy NLMT tiết kiệm bao nhiêu?"<br>• "Mua ở đâu?"<br>• "Nước nhiễm phèn dùng được không?"<br><br>Hoặc gọi <b>0123 456 789</b> để được tư vấn trực tiếp.');setTimeout(function(){addBotMsg(ans.greeting2)},800)}send.disabled=false},800+Math.random()*600)}btn.addEventListener('click',toggleChat);document.getElementById('chatClose').addEventListener('click',toggleChat);send.addEventListener('click',sendMsg);input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!send.disabled)sendMsg()});quick.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){input.value=this.textContent.replace('🔥','').replace('📋','').replace('📍','').replace('📱','').trim();sendMsg()})})})()
 </script>
+<!-- Chatbot UI -->
+<button class="chat-btn" id="chatBtn" aria-label="Chat với tư vấn viên"><i class="fas fa-comment-dots"></i><span class="chat-badge">1</span></button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="ch-av"><i class="fas fa-robot"></i></div>
+    <div class="ch-info">
+      <div class="ch-name">AI Tư vấn Tân Mỹ</div>
+      <div class="ch-status">Online</div>
+    </div>
+    <button class="ch-close" id="chatClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-quick" id="chatQuick">
+    <button>🔥 Bồn nước inox</button>
+    <button>🔥 Máy NLMT</button>
+    <button>📋 Bảng giá</button>
+    <button>📍 Mua ở đâu</button>
+    <button>📱 Bảo hành</button>
+  </div>
+  <div class="chat-foot">
+    <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn..." autocomplete="off">
+    <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
 </body>
 </html>
