@@ -256,6 +256,25 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
 .cta-content .btn-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .6s}
 .cta-content .btn-cta:hover::before{transform:translateX(100%)}
 .cta-content .btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--accent-glow)}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-cta-alt{background:transparent!important;border:1.5px solid rgba(255,212,28,.5);color:var(--accent)!important;font-weight:600!important}
+.btn-cta-alt:hover{background:var(--accent)!important;color:var(--primary-darker)!important;border-color:var(--accent)!important}
+
+/* TANK CALC MODAL */
+.mini-modal .modal-box{padding:32px}
+.mini-modal .modal-box h2{font-size:20px;color:var(--primary);margin-bottom:6px}
+.mini-modal .modal-box>p{font-size:13px;color:var(--text-light);margin-bottom:20px}
+.tank-form .tf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.tank-form label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.tank-form select{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:#fff;color:var(--text);outline:none;transition:border .2s}
+.tank-form select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,212,28,.2)}
+.tank-result{display:none;margin-top:18px;padding:18px;background:linear-gradient(135deg,#f0f4ff,#e8ecf8);border-radius:12px;text-align:center}
+.tank-result .tr-title{font-size:13px;color:var(--text-light);margin-bottom:4px}
+.tank-result .tr-size{font-size:36px;font-weight:800;color:var(--primary);line-height:1.2}
+.tank-result .tr-size::after{content:' gợi ý';font-size:14px;font-weight:400;color:var(--text-light);display:block}
+.tank-result .tr-desc{font-size:13.5px;color:var(--text);margin-top:8px;line-height:1.5}
+.btn-modal-action{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gradient);color:#fff;border:none;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s;overflow:hidden;position:relative}
+.btn-modal-action:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(16,55,118,.3)}
 
 /* CONTACT */
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -451,6 +470,102 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
 .map-wrap{border-radius:var(--radius);overflow:hidden;margin-top:12px;box-shadow:var(--shadow-sm)}
 .map-wrap iframe{width:100%;height:260px;border:none;display:block}
 
+/* HERO ARROWS */
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.hero-arrow:hover{background:var(--accent);color:var(--primary-darker);border-color:var(--accent);transform:translateY(-50%) scale(1.1)}
+.hero-arrow.prev{left:20px}
+.hero-arrow.next{right:20px}
+
+/* TRUST STRIP */
+.trust-strip{background:var(--primary);padding:18px 0;position:relative;z-index:2}
+.trust-strip .trust-grid{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:center}
+.trust-strip .trust-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.8);font-size:12px;font-weight:500;letter-spacing:.3px}
+.trust-strip .trust-item i{font-size:16px;color:var(--accent);width:20px;text-align:center}
+
+/* TIMELINE */
+.timeline{position:relative;padding:0}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--primary),var(--accent),transparent);transform:translateX(-50%)}
+.tl-item{display:flex;align-items:flex-start;gap:40px;margin-bottom:32px;position:relative}
+.tl-item:nth-child(odd){flex-direction:row}
+.tl-item:nth-child(even){flex-direction:row-reverse}
+.tl-item .tl-dot{flex-shrink:0;width:16px;height:16px;border-radius:50%;background:var(--gradient-gold);position:relative;z-index:2;margin-top:6px;box-shadow:0 0 0 4px rgba(255,212,28,.1),0 0 20px rgba(255,212,28,.2)}
+.tl-item .tl-content{flex:1;max-width:45%;background:#fff;border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-card);border:1px solid rgba(0,0,0,.03)}
+.tl-item .tl-content .tl-year{font-size:13px;font-weight:800;color:var(--accent);margin-bottom:4px;letter-spacing:1px}
+.tl-item .tl-content h4{font-size:15px;color:var(--primary);margin-bottom:6px}
+.tl-item .tl-content p{font-size:13px;color:var(--text-light);line-height:1.6}
+@keyframes tlReveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.tl-item.reveal.active .tl-content{animation:tlReveal .6s ease forwards}
+
+/* PRODUCT BADGES */
+.prod-card .prod-badge{position:absolute;top:12px;left:12px;z-index:3;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;pointer-events:none}
+.prod-card .prod-badge.hot{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 2px 8px rgba(239,68,68,.3)}
+.prod-card .prod-badge.new{background:var(--gradient-blue);color:#fff;box-shadow:0 2px 8px rgba(16,55,118,.2)}
+.prod-card .prod-badge.save{background:var(--gradient-gold);color:var(--primary-darker);box-shadow:0 2px 8px rgba(255,212,28,.3)}
+
+/* QUOTE BUTTON */
+.prod-card .prod-body .btn-quote{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:var(--accent-soft);color:var(--primary);border-radius:50px;font-size:11px;font-weight:600;transition:all .3s;border:none;cursor:pointer;font-family:inherit;margin-left:6px}
+.prod-card .prod-body .btn-quote:hover{background:var(--accent);color:var(--primary-darker);transform:translateY(-1px)}
+.card-footer{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+
+/* FAQ */
+.faq-grid{max-width:720px;margin:0 auto}
+.faq-item{border-radius:var(--radius-lg);overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow-card);border:1px solid rgba(0,0,0,.03);transition:box-shadow .3s;background:#fff}
+.faq-item:hover{box-shadow:var(--shadow-card-hover)}
+.faq-item .faq-q{width:100%;padding:18px 24px;background:none;border:none;font-size:15px;font-weight:600;color:var(--text);text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit;transition:color .3s}
+.faq-item .faq-q:hover{color:var(--primary)}
+.faq-item .faq-q i{font-size:12px;color:var(--text-muted);transition:transform .3s,color .3s;flex-shrink:0}
+.faq-item.open .faq-q{color:var(--primary)}
+.faq-item.open .faq-q i{transform:rotate(180deg);color:var(--primary)}
+.faq-item .faq-a{padding:0 24px 0;max-height:0;overflow:hidden;transition:all .35s ease;font-size:14px;color:var(--text-light);line-height:1.7}
+.faq-item.open .faq-a{padding:0 24px 20px;max-height:300px}
+
+/* DEALER MAP */
+.dealer-section .d-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:28px}
+.dealer-section .d-tab{padding:10px 24px;border:1.5px solid #e2e6ec;border-radius:50px;font-size:13px;font-weight:600;background:#fff;color:#4b5563;cursor:pointer;transition:all .25s;font-family:inherit}
+.dealer-section .d-tab:hover{border-color:var(--primary);color:var(--primary)}
+.dealer-section .d-tab.active{background:var(--gradient-blue);color:#fff;border-color:var(--primary);box-shadow:0 4px 14px rgba(16,55,118,.15)}
+.dealer-section .d-panel{display:none;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.dealer-section .d-panel.active{display:grid}
+.dealer-section .d-panel .d-info h4{font-size:18px;color:var(--primary);margin-bottom:8px}
+.dealer-section .d-panel .d-info p{font-size:14px;color:var(--text-light);line-height:1.7;margin-bottom:6px}
+.dealer-section .d-panel .d-info p i{width:20px;color:var(--primary)}
+.dealer-section .d-coverage{margin-top:16px;padding:14px 18px;background:var(--primary-light);border-radius:var(--radius);text-align:center}
+.dealer-section .d-coverage .cov-bar{height:8px;border-radius:4px;background:#e2e6ec;overflow:hidden;margin:8px 0 4px;position:relative}
+.dealer-section .d-coverage .cov-bar span{display:block;height:100%;border-radius:4px;background:var(--gradient-blue);transition:width 1s ease}
+.dealer-section .d-coverage .cov-lbl{font-size:12px;color:var(--text-muted)}
+
+/* EXTENDED CERT */
+.cert-extended{padding:12px 0 16px;text-align:center}
+.cert-extended .cert-ext-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;align-items:center}
+.cert-extended .cert-ext-item{display:flex;align-items:center;gap:8px;color:var(--text-light);font-size:12px;font-weight:500}
+.cert-extended .cert-ext-item i{font-size:18px;color:var(--accent)}
+
+/* TANK CALC */
+.tank-form{text-align:left}
+.tank-form .tf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.tank-form label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.tank-form select,.tank-form input{width:100%;padding:10px 14px;border:1.5px solid #e2e6ec;border-radius:var(--radius-sm);font-size:13px;font-family:inherit;transition:all .3s;background:#fff}
+.tank-form select:focus,.tank-form input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(16,55,118,.06)}
+.tank-result{margin-top:16px;padding:18px;background:var(--primary-light);border-radius:var(--radius);display:none}
+.tank-result.show{display:block}
+.tank-result .tr-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:6px}
+.tank-result .tr-size{font-size:32px;font-weight:800;color:var(--primary)}
+.tank-result .tr-desc{font-size:13px;color:var(--text-light);margin-top:4px}
+
+/* RESPONSIVE TIMELINE */
+@media(max-width:767px){
+  .timeline::before{left:12px}
+  .tl-item,.tl-item:nth-child(even){flex-direction:row!important;gap:16px}
+  .tl-item .tl-content{max-width:100%}
+  .dealer-section .d-panel{grid-template-columns:1fr}
+  .dealer-section .d-panel.active{grid-template-columns:1fr}
+  .trust-strip .trust-grid{gap:16px}
+  .tank-form .tf-row{grid-template-columns:1fr}
+  .hero-arrow{width:32px;height:32px;font-size:12px}
+  .hero-arrow.prev{left:8px}
+  .hero-arrow.next{right:8px}
+}
+
 /* === TECH EFFECTS === */
 
 /* Scroll Progress Bar */
@@ -643,8 +758,24 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
       <div class="dot" data-slide="1"></div>
       <div class="dot" data-slide="2"></div>
     </div>
+    <button class="hero-arrow prev" onclick="heroSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="hero-arrow next" onclick="heroSlide(1)"><i class="fas fa-chevron-right"></i></button>
   </div>
 </section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+      <span class="trust-item"><i class="fas fa-certificate"></i> ISO 9001:2015</span>
+      <span class="trust-item"><i class="fas fa-check-circle"></i> QCVN 12-1:2011/BYT</span>
+      <span class="trust-item"><i class="fas fa-award"></i> 25+ Năm thương hiệu</span>
+      <span class="trust-item"><i class="fas fa-store"></i> 500+ Đại lý</span>
+      <span class="trust-item"><i class="fas fa-truck"></i> Giao hàng toàn quốc</span>
+      <span class="trust-item"><i class="fas fa-headset"></i> Hỗ trợ 24/7</span>
+    </div>
+  </div>
+</div>
 
 <!-- CATEGORY THUMBS -->
 <section class="cat-section">
@@ -705,6 +836,66 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
   </div>
 </section>
 
+<!-- TIMELINE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 data-i18n="tl_title">Lịch sử <span class="tech-accent">phát triển</span></h2>
+      <div class="tech-bar"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1999</div>
+          <h4>Thành lập Công ty TNHH Tân Mỹ</h4>
+          <p>Khởi đầu với nhà máy sản xuất bồn nước inox tại Hà Nội, tạo nền tảng cho thương hiệu Việt bền vững.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">2005</div>
+          <h4>Mở rộng nhà máy & dây chuyền sản xuất</h4>
+          <p>Đầu tư dây chuyền sản xuất hiện đại, nâng công suất lên 50.000 sản phẩm/năm, mở rộng thị trường miền Trung và miền Nam.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">2010</div>
+          <h4>Đạt chứng nhận ISO 9001:2008</h4>
+          <p>Hệ thống quản lý chất lượng đạt chuẩn quốc tế ISO, khẳng định cam kết chất lượng sản phẩm và dịch vụ.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-3">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">2015</div>
+          <h4>Ra mắt dòng sản phẩm NLMT & Nhôm định hình</h4>
+          <p>Đa dạng hóa danh mục với máy nước nóng năng lượng mặt trời và nhôm thanh định hình, phục vụ mọi công trình.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-4">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">2020</div>
+          <h4>500+ đại lý phân phối toàn quốc</h4>
+          <p>Hệ thống phân phối phủ sóng 63 tỉnh thành, trở thành một trong những thương hiệu gia dụng & công nghiệp hàng đầu.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-5">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">2026</div>
+          <h4>Chuyển đổi số & Nâng tầm thương hiệu</h4>
+          <p>Ứng dụng công nghệ số vào vận hành, ra mắt nền tảng thương mại điện tử, hướng tới mục tiêu phát triển bền vững.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRODUCTS -->
 <section class="section section-alt" id="products">
   <div class="section-decal decal-1"></div>
@@ -726,20 +917,24 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
     </div>
     <div class="prod-grid">
       <div class="prod-card reveal reveal-delay-1" data-name="Bồn nước Inox Tân Mỹ" data-code="BN-100" data-desc="Chống rỉ sét, dung tích 100L–5000L. Bảo hành 5 năm chính hãng." data-img="https://tanmygroup.com.vn/wp-content/uploads/2026/05/bon-Photoroom.png" data-img2="https://tanmygroup.com.vn/wp-content/uploads/2026/05/bon-Photoroom.png" data-features='["Inox 304 chất lượng cao","Dung tích 100L - 5000L","Bảo hành 5 năm chính hãng","Phù hợp mọi gia đình","Van phao nhập khẩu","Chống rỉ sét tối đa"]'>
+        <span class="prod-badge hot">Bán chạy</span>
         <div class="prod-img"><img src="https://tanmygroup.com.vn/wp-content/uploads/2026/05/bon-Photoroom.png" alt="Bồn nước Inox" loading="lazy"></div>
         <div class="prod-body">
           <h3>Bồn nước Inox Tân Mỹ</h3>
           <div class="card-footer">
             <a href="#" class="btn-detail" onclick="openModal(this.closest('.prod-card'));return false" data-i18n="detail">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn-quote" onclick="openQuote(this.closest('.prod-card'));return false"><i class="fas fa-file-invoice"></i> Báo giá</a>
           </div>
         </div>
       </div>
       <div class="prod-card reveal reveal-delay-2" data-name="Bồn nhựa đa năng Tân Mỹ" data-code="BN-200" data-desc="Nhựa nguyên sinh cao cấp, an toàn tuyệt đối cho nguồn nước sinh hoạt." data-img="https://tanmygroup.com.vn/wp-content/uploads/2025/09/image_bonnhua.jpg" data-img2="https://tanmygroup.com.vn/wp-content/uploads/2025/09/image_bonnhua.jpg" data-features='["Nhựa nguyên sinh nguyên chất","QCVN 12-1:2011/BYT","An toàn cho nước sinh hoạt","Bền bỉ dưới mọi thời tiết","Giá thành hợp lý","Đa dạng dung tích"]'>
+        <span class="prod-badge new">Mới</span>
         <div class="prod-img"><img src="https://tanmygroup.com.vn/wp-content/uploads/2025/09/image_bonnhua.jpg" alt="Bồn nhựa đa năng" loading="lazy"></div>
         <div class="prod-body">
           <h3>Bồn nhựa đa năng</h3>
           <div class="card-footer">
             <a href="#" class="btn-detail" onclick="openModal(this.closest('.prod-card'));return false" data-i18n="detail">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn-quote" onclick="openQuote(this.closest('.prod-card'));return false"><i class="fas fa-file-invoice"></i> Báo giá</a>
           </div>
         </div>
       </div>
@@ -749,6 +944,7 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
           <h3>Bể tự hoại SEPTIC</h3>
           <div class="card-footer">
             <a href="#" class="btn-detail" onclick="openModal(this.closest('.prod-card'));return false" data-i18n="detail">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn-quote" onclick="openQuote(this.closest('.prod-card'));return false"><i class="fas fa-file-invoice"></i> Báo giá</a>
           </div>
         </div>
       </div>
@@ -758,15 +954,18 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
           <h3>Chậu rửa inox Lucky</h3>
           <div class="card-footer">
             <a href="#" class="btn-detail" onclick="openModal(this.closest('.prod-card'));return false" data-i18n="detail">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn-quote" onclick="openQuote(this.closest('.prod-card'));return false"><i class="fas fa-file-invoice"></i> Báo giá</a>
           </div>
         </div>
       </div>
       <div class="prod-card reveal reveal-delay-2" data-name="Máy nước nóng NLMT" data-code="NL-500" data-desc="Ống chân không công nghệ cao, tiết kiệm đến 90% điện năng." data-img="https://tanmygroup.com.vn/wp-content/uploads/2025/09/may_nang-luong-mat-troi-1.jpg" data-img2="https://tanmygroup.com.vn/wp-content/uploads/2025/09/may_nang-luong-mat-troi-1.jpg" data-features='["Ống chân không công nghệ cao","Tiết kiệm 90% điện năng","Tuổi thọ 15+ năm","Hoạt động tốt cả ngày râm","Tự động bơm tuần hoàn","Bảo hành 5 năm"]'>
+        <span class="prod-badge save">Tiết kiệm</span>
         <div class="prod-img"><img src="https://tanmygroup.com.vn/wp-content/uploads/2025/09/may_nang-luong-mat-troi-1.jpg" alt="Máy nước nóng NLMT" loading="lazy"></div>
         <div class="prod-body">
           <h3>Máy nước nóng NLMT</h3>
           <div class="card-footer">
             <a href="#" class="btn-detail" onclick="openModal(this.closest('.prod-card'));return false" data-i18n="detail">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn-quote" onclick="openQuote(this.closest('.prod-card'));return false"><i class="fas fa-file-invoice"></i> Báo giá</a>
           </div>
         </div>
       </div>
@@ -776,6 +975,7 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
           <h3>Nhôm thanh định hình</h3>
           <div class="card-footer">
             <a href="#" class="btn-detail" onclick="openModal(this.closest('.prod-card'));return false" data-i18n="detail">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn-quote" onclick="openQuote(this.closest('.prod-card'));return false"><i class="fas fa-file-invoice"></i> Báo giá</a>
           </div>
         </div>
       </div>
@@ -856,6 +1056,38 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 data-i18n="faq_title">Câu hỏi <span class="tech-accent">thường gặp</span></h2>
+      <div class="tech-bar"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">Bồn nước inox Tân Mỹ có bị rỉ sét không? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Bồn nước inox Tân Mỹ được sản xuất từ inox 304 chất lượng cao, có khả năng chống rỉ sét vượt trội. Với lớp inox dày, bề mặt sáng bóng, sản phẩm đảm bảo độ bền lên đến 15-20 năm trong điều kiện sử dụng bình thường.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Tôi nên chọn bồn nước dung tích bao nhiêu? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Dung tích phù hợp phụ thuộc vào số thành viên và nhu cầu sử dụng. Gia đình 2-3 người thường dùng bồn 300-500L, 4-5 người dùng 500-750L, trên 6 người hoặc có tầng nên dùng 1000L trở lên. Bạn có thể dùng công cụ tính bồn nước bên dưới để được gợi ý chính xác.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Máy nước nóng NLMT có dùng được khi trời râm không? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Có. Máy nước nóng NLMT Tân Mỹ sử dụng ống chân không công nghệ cao, có khả năng hấp thụ tia hồng ngoại ngay cả khi trời râm hoặc có mây. Tuy nhiên, hiệu suất sẽ cao nhất khi trời nắng. Vào mùa mưa kéo dài, có thể kết hợp thêm điện trở dự phòng (Rơ-le tự động ngắt khi đủ nhiệt).</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Chế độ bảo hành sản phẩm như thế nào? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Tân Mỹ cung cấp chế độ bảo hành chính hãng: bồn nước inox 5 năm, máy nước nóng NLMT 5 năm, bồn nhựa 3 năm, bể tự hoại 3 năm. Khách hàng có thể tra cứu bảo hành trực tiếp trên website hoặc liên hệ tổng đài 0123 456 789.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Làm thế nào để mua hàng chính hãng Tân Mỹ? <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a">Quý khách có thể mua hàng trực tiếp tại hệ thống 500+ đại lý trên toàn quốc, hoặc liên hệ văn phòng công ty tại 77 Lê Văn Hưu, Hai Bà Trưng, Hà Nội. Để được tư vấn trực tiếp, vui lòng gọi hotline 0123 456 789.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- VIDEOS -->
 <section class="section">
   <div class="container">
@@ -913,6 +1145,79 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
   </div>
 </section>
 
+<!-- DEALER MAP -->
+<section class="section dealer-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 data-i18n="dealer_title">Mạng lưới <span class="tech-accent">đại lý</span></h2>
+      <div class="tech-bar"></div>
+    </div>
+    <div class="d-tabs reveal">
+      <button class="d-tab active" onclick="switchDealer('bac',this)"><i class="fas fa-location-dot"></i> Miền Bắc</button>
+      <button class="d-tab" onclick="switchDealer('trung',this)"><i class="fas fa-location-dot"></i> Miền Trung</button>
+      <button class="d-tab" onclick="switchDealer('nam',this)"><i class="fas fa-location-dot"></i> Miền Nam</button>
+    </div>
+    <div class="d-panel active" id="dealer-bac">
+      <div class="d-info reveal reveal-delay-1">
+        <h4>Miền Bắc — Trụ sở chính & Hệ thống phân phối</h4>
+        <p><i class="fas fa-industry"></i> Nhà máy: KCN Thạch Thất - Quốc Oai, Hà Nội</p>
+        <p><i class="fas fa-map-marker-alt"></i> Văn phòng: 77 Lê Văn Hưu, P. Hai Bà Trưng, Hà Nội</p>
+        <p><i class="fas fa-phone"></i> 0123 456 789</p>
+        <div class="d-coverage">
+          <div style="font-size:14px;font-weight:700;color:var(--primary)">Độ phủ sóng</div>
+          <div class="cov-bar"><span style="width:92%"></span></div>
+          <div class="cov-lbl">28/28 tỉnh thành — 92%</div>
+        </div>
+      </div>
+      <div class="d-info reveal reveal-delay-2">
+        <h4>Hệ thống đại lý miền Bắc</h4>
+        <p><i class="fas fa-check-circle"></i> Hơn 200 đại lý phân phối</p>
+        <p><i class="fas fa-check-circle"></i> Kho trung chuyển tại Hà Nội, Hải Phòng, Thanh Hóa</p>
+        <p><i class="fas fa-check-circle"></i> Giao hàng trong 24-48h</p>
+        <p><i class="fas fa-truck"></i> Vận chuyển tận công trình miễn phí bán kính 100km</p>
+      </div>
+    </div>
+    <div class="d-panel" id="dealer-trung">
+      <div class="d-info reveal reveal-delay-1">
+        <h4>Miền Trung — Chi nhánh & Kho vận</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Chi nhánh Đà Nẵng: 120 Nguyễn Hữu Thọ, Q. Hải Châu</p>
+        <p><i class="fas fa-phone"></i> 0236 888 999</p>
+        <div class="d-coverage">
+          <div style="font-size:14px;font-weight:700;color:var(--primary)">Độ phủ sóng</div>
+          <div class="cov-bar"><span style="width:78%"></span></div>
+          <div class="cov-lbl">14/19 tỉnh thành — 78%</div>
+        </div>
+      </div>
+      <div class="d-info reveal reveal-delay-2">
+        <h4>Hệ thống đại lý miền Trung</h4>
+        <p><i class="fas fa-check-circle"></i> Hơn 120 đại lý phân phối</p>
+        <p><i class="fas fa-check-circle"></i> Kho trung chuyển tại Đà Nẵng, Huế, Nha Trang</p>
+        <p><i class="fas fa-check-circle"></i> Giao hàng trong 48-72h</p>
+        <p><i class="fas fa-truck"></i> Liên kết vận chuyển liên tỉnh</p>
+      </div>
+    </div>
+    <div class="d-panel" id="dealer-nam">
+      <div class="d-info reveal reveal-delay-1">
+        <h4>Miền Nam — Trung tâm phân phối phía Nam</h4>
+        <p><i class="fas fa-map-marker-alt"></i> VP đại diện: 125 Lê Lợi, Q. 1, TP.HCM</p>
+        <p><i class="fas fa-phone"></i> 028 3822 5678</p>
+        <div class="d-coverage">
+          <div style="font-size:14px;font-weight:700;color:var(--primary)">Độ phủ sóng</div>
+          <div class="cov-bar"><span style="width:85%"></span></div>
+          <div class="cov-lbl">17/20 tỉnh thành — 85%</div>
+        </div>
+      </div>
+      <div class="d-info reveal reveal-delay-2">
+        <h4>Hệ thống đại lý miền Nam</h4>
+        <p><i class="fas fa-check-circle"></i> Hơn 180 đại lý phân phối</p>
+        <p><i class="fas fa-check-circle"></i> Kho trung chuyển tại TP.HCM, Cần Thơ, Biên Hòa</p>
+        <p><i class="fas fa-check-circle"></i> Giao hàng trong 24-72h</p>
+        <p><i class="fas fa-truck"></i> Hỗ trợ vận chuyển nội thành</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PARTNERS -->
 <section class="section" style="padding:40px 0">
   <div class="container">
@@ -939,6 +1244,18 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
   </div>
 </section>
 
+<!-- CERT EXTENDED -->
+<div class="cert-extended">
+  <div class="container">
+    <div class="cert-ext-grid">
+      <span class="cert-ext-item"><i class="fas fa-certificate"></i> ISO 9001:2015</span>
+      <span class="cert-ext-item"><i class="fas fa-check-double"></i> QCVN 12-1:2011/BYT</span>
+      <span class="cert-ext-item"><i class="fas fa-check-double"></i> TCVN 6305-1:2020</span>
+      <span class="cert-ext-item"><i class="fas fa-star"></i> Hàng Việt Nam Chất lượng cao</span>
+    </div>
+  </div>
+</div>
+
 <!-- CERT BAR -->
 <div class="cert-bar">
   <div class="container">
@@ -956,7 +1273,10 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
     <div class="cta-content reveal">
       <h2 data-i18n="cta_title">Bạn cần tư vấn sản phẩm?</h2>
       <p data-i18n="cta_desc">Đội ngũ chuyên viên của Tân Mỹ luôn sẵn sàng hỗ trợ bạn chọn sản phẩm phù hợp nhất</p>
-      <a href="tel:0123456789" class="btn-cta" data-i18n="cta_btn"><i class="fas fa-phone-alt"></i> Gọi ngay: 0123 456 789</a>
+      <div class="cta-btns">
+        <a href="tel:0123456789" class="btn-cta" data-i18n="cta_btn"><i class="fas fa-phone-alt"></i> Gọi ngay: 0123 456 789</a>
+        <a href="#" class="btn-cta btn-cta-alt" onclick="openTankCalc();return false"><i class="fas fa-calculator"></i> Tính bồn nước</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1111,6 +1431,34 @@ nav.main-nav>ul>li:hover .sub-menu{display:block;animation:dropIn .25s ease}
   </div>
 </div>
 
+<!-- TANK CALC MODAL -->
+<div class="modal-overlay mini-modal" id="tankModal" onclick="if(event.target===this)closeTankCalc()">
+  <div class="modal-box" style="max-width:520px">
+    <button class="modal-close" onclick="closeTankCalc()">&times;</button>
+    <h2 data-i18n="tank_title"><i class="fas fa-tint"></i> Chọn bồn nước phù hợp</h2>
+    <p data-i18n="tank_desc">Nhập thông tin để nhận gợi ý dung tích bồn nước phù hợp với gia đình bạn</p>
+    <div class="tank-form">
+      <div class="tf-row">
+        <div>
+          <label>Số người</label>
+          <select id="tankPeople"><option value="1">1 người</option><option value="2">2 người</option><option value="3" selected>3 người</option><option value="4">4 người</option><option value="5">5 người</option><option value="6">6 người</option><option value="7">7 người</option><option value="8">8+ người</option></select>
+        </div>
+        <div>
+          <label>Mục đích sử dụng</label>
+          <select id="tankPurpose"><option value="sinhhoat">Sinh hoạt</option><option value="kinhdoanh">Kinh doanh - Nhà hàng</option><option value="congtrinh">Công trình - Nhà xưởng</option></select>
+        </div>
+      </div>
+      <button class="btn-modal-action" onclick="calcTankSize()" style="width:100%;justify-content:center"><i class="fas fa-calculator"></i> Gợi ý dung tích</button>
+    </div>
+    <div class="tank-result" id="tankResult">
+      <div class="tr-title">Dung tích phù hợp:</div>
+      <div class="tr-size" id="tankSize">750L</div>
+      <div class="tr-desc" id="tankDesc">Phù hợp cho gia đình 3-4 người, đủ nước cho sinh hoạt hàng ngày và dự trữ.</div>
+      <button class="btn-modal-action" style="margin-top:12px;width:100%;justify-content:center;background:var(--gradient-gold);color:var(--primary-darker)" onclick="closeTankCalc();alert('Chức năng tư vấn AI đang được xây dựng. Vui lòng gọi 0123 456 789 để được tư vấn trực tiếp.')"><i class="fas fa-robot"></i> Tư vấn AI</button>
+    </div>
+  </div>
+</div>
+
 <!-- PRODUCT MODAL -->
 <div class="modal-overlay" id="productModal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
@@ -1229,7 +1577,28 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener
 (function(){var nums=document.querySelectorAll('.about-stats .as-item .num');if(!nums.length)return;var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('glow');setTimeout(function(){e.target.classList.remove('glow')},1500);obs.unobserve(e.target)}})},{threshold:.5});nums.forEach(function(el){obs.observe(el)})})()
 
 // Tech Floating Decals - also inject into regular sections
-(function(){document.querySelectorAll('.section:not(.section-alt):not(.hero):not(.cta-section)').forEach(function(s){if(!s.querySelector('.section-decal')){var d1=document.createElement('div');d1.className='section-decal decal-1';var d2=document.createElement('div');d2.className='section-decal decal-2';s.appendChild(d1);s.appendChild(d2)}})})()
+(function(){document.querySelectorAll('.section:not(.section-alt):not(.hero):not(.cta-section)').forEach(function(s){if(!s.querySelector('.section-decal')){var d1=document.createElement('div');d1.className='section-decal decal-1';var d2=document.createElement('div');d2.className='section-decal decal-2';s.appendChild(d1);s.appendChild(d2)}})})();
+
+// === NEW SECTIONS (v6) ===
+
+// Hero Arrows
+var heroIdx=0;var heroImgs=['https://tanmygroup.com.vn/wp-content/uploads/2026/05/bon-Photoroom.png','https://tanmygroup.com.vn/wp-content/uploads/2025/09/may_nang-luong-mat-troi-1.jpg','https://tanmygroup.com.vn/wp-content/uploads/2026/05/septicc-Photoroom.png'];var heroTitles=['Sản phẩm <span class=&quot;highlight&quot;>chất lượng cao</span>','Năng lượng <span class=&quot;highlight&quot;>xanh</span> cho mọi nhà','Giải pháp <span class=&quot;highlight&quot;>toàn diện</span> cho công trình'];function heroSlide(d){var dots=document.querySelectorAll('.hero-dots .dot'),len=dots.length;heroIdx=(heroIdx+d+len)%len;dots.forEach(function(d,i){d.classList.toggle('active',i===heroIdx)});var bg=document.querySelector('.hero-bg');if(bg)bg.style.transform='scale(1.0'+heroIdx+')';var heroTitle=document.querySelector('.hero-content h1');if(heroTitle)heroTitle.innerHTML=heroTitles[heroIdx]}
+document.querySelectorAll('.hero-dots .dot').forEach(function(d){d.addEventListener('click',function(){var idx=parseInt(this.getAttribute('data-slide'))||0;heroIdx=idx;var dots=document.querySelectorAll('.hero-dots .dot');dots.forEach(function(d,i){d.classList.toggle('active',i===idx)});var heroTitle=document.querySelector('.hero-content h1');if(heroTitle)heroTitle.innerHTML=heroTitles[idx]})})
+setInterval(function(){heroSlide(1)},6000)
+
+// FAQ Toggle
+function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open')});if(!isOpen)item.classList.add('open')}
+
+// Dealer Map Tabs
+function switchDealer(region,btn){document.querySelectorAll('.d-tab').forEach(function(t){t.classList.remove('active')});btn.classList.add('active');document.querySelectorAll('.d-panel').forEach(function(p){p.classList.remove('active')});document.getElementById('dealer-'+region).classList.add('active')}
+
+// Quote Button
+function openQuote(card){var name=card.getAttribute('data-name')||'';var code=card.getAttribute('data-code')||'';var msg='Tôi muốn nhận báo giá sản phẩm: '+name+' ('+code+')';var forms=document.getElementById('contactForm');if(forms){forms.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){var m=document.getElementById('cf_message');if(m){m.value=msg;m.dispatchEvent(new Event('input'))}},500)}}
+
+// Tank Calculator Modal
+function openTankCalc(){document.getElementById('tankModal').classList.add('open');document.body.style.overflow='hidden';calcTankSize()}
+function closeTankCalc(){document.getElementById('tankModal').classList.remove('open');document.body.style.overflow=''}
+function calcTankSize(){var people=parseInt(document.getElementById('tankPeople').value);var purpose=document.getElementById('tankPurpose').value;var base;if(purpose==='sinhhoat'){var map={1:150,2:300,3:500,4:750,5:1000,6:1500,7:2000,8:3000};base=map[people]||1500}else if(purpose==='kinhdoanh'){var map={1:300,2:500,3:750,4:1000,5:1500,6:2000,7:3000,8:5000};base=map[people]||3000}else{var map={1:500,2:750,3:1000,4:1500,5:2000,6:3000,7:5000,8:10000};base=map[people]||5000}document.getElementById('tankSize').textContent=base.toLocaleString()+'L';var descs={sinhhoat:'Phù hợp cho nhu cầu sinh hoạt hàng ngày. Đủ nước cho tắm giặt, nấu ăn và dự trữ.',kinhdoanh:'Phù hợp cho kinh doanh dịch vụ. Đảm bảo đủ nước cho nhà hàng, khách sạn nhỏ.',congtrinh:'Phù hợp cho công trình và nhà xưởng. Đáp ứng nhu cầu nước quy mô lớn.'};document.getElementById('tankDesc').textContent=descs[purpose]||'';document.getElementById('tankResult').style.display='block'}
 </script>
 </body>
 </html>
