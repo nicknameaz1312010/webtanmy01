@@ -33,6 +33,11 @@ html = '''<!DOCTYPE html>
         .project-card:hover img { transform: scale(1.1); }
         .process-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #d1d5db; }
         @media (max-width: 1023px) { .process-arrow { display: none; } }
+        .float-btn { transition: all 0.3s ease; }
+        .float-btn:hover { transform: scale(1.1); }
+        .float-panel { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: bottom right; }
+        .float-panel.show { opacity: 1; visibility: visible; transform: scale(1); }
+        .float-panel.hide { opacity: 0; visibility: hidden; transform: scale(0.8); }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
@@ -329,52 +334,82 @@ html = '''<!DOCTYPE html>
     </div>
 </section>
 
-<!-- KHỐI 9: CHĂM SÓC KHÁCH HÀNG -->
+<!-- KHỐI 9: CHĂM SÓC KHÁCH HÀNG (CHAT WIDGET) -->
 <section class="bg-[#f8fafc] py-14 border-t border-gray-200">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-black uppercase text-brandBlue">Chăm sóc khách hàng</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center bg-white rounded-xl shadow-sm p-8 lg:p-10">
-                <div class="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <svg viewBox="0 0 550 120" class="h-14 w-auto mb-4" xmlns="http://www.w3.org/2000/svg">
-                        <g transform="translate(5, 5)">
-                            <rect width="110" height="110" fill="white" stroke="#014289" stroke-width="4"/>
-                            <path d="M 4 80 Q 55 105 106 80 L 106 106 L 4 106 Z" fill="#014289"/>
-                            <path d="M 4 106 Q 55 90 106 106 Z" fill="white"/>
-                            <path d="M 55 10 L 25 90 Q 55 75 85 90 Z" fill="#F1C40F"/>
-                            <path d="M 35 35 L 75 35 M 55 35 L 55 75" stroke="#ED1C24" stroke-width="8" stroke-linecap="square"/>
-                            <text x="36" y="75" font-family="sans-serif" font-weight="900" font-size="34" fill="#ED1C24">M</text>
-                        </g>
-                        <text x="135" y="75" font-family="sans-serif" font-weight="900" font-size="82" fill="#014289" letter-spacing="-2">TANMY</text>
-                        <text x="138" y="108" font-family="sans-serif" font-weight="500" font-size="28" fill="#ED1C24">Trường tồn cùng thời gian</text>
-                    </svg>
-                    <p class="text-sm text-gray-500">Công ty TNHH Tân Mỹ - Đối tác tin cậy của mọi nhà.</p>
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                <div class="bg-brandBlue p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-md">
+                        <svg viewBox="0 0 120 120" class="h-9 w-9" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="110" height="110" x="5" y="5" fill="white" stroke="#014289" stroke-width="4" rx="4"/>
+                            <path d="M 9 83 Q 60 108 111 83 L 111 111 L 9 111 Z" fill="#014289"/>
+                            <path d="M 9 111 Q 60 95 111 111 Z" fill="white"/>
+                            <path d="M 60 15 L 30 95 Q 60 80 90 95 Z" fill="#F1C40F"/>
+                            <path d="M 40 40 L 80 40 M 60 40 L 60 80" stroke="#ED1C24" stroke-width="8" stroke-linecap="square"/>
+                            <text x="41" y="80" font-family="sans-serif" font-weight="900" font-size="38" fill="#ED1C24">M</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-black text-lg">Chăm sóc khách hàng</h3>
+                        <p class="text-blue-200 text-xs">Tân Mỹ Group luôn sẵn sàng hỗ trợ bạn</p>
+                    </div>
+                    <div class="ml-auto hidden sm:flex items-center gap-3">
+                        <span class="flex items-center gap-1.5 text-blue-200 text-xs"><span class="w-2 h-2 rounded-full bg-green-400 inline-block animate-pulse"></span> Đang hoạt động</span>
+                    </div>
                 </div>
-                <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div class="text-center p-4 rounded-lg bg-gray-50 hover:shadow-md transition">
-                        <div class="w-12 h-12 rounded-full bg-brandBlue flex items-center justify-center mx-auto mb-3">
-                            <i class="fa-solid fa-phone text-white text-lg"></i>
+                <div class="p-6 lg:p-8">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-brandBlue/10 flex items-center justify-center flex-shrink-0">
+                            <svg viewBox="0 0 120 120" class="h-7 w-7" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="110" height="110" x="5" y="5" fill="white" stroke="#014289" stroke-width="4" rx="4"/>
+                                <path d="M 60 15 L 30 95 Q 60 80 90 95 Z" fill="#F1C40F"/>
+                                <path d="M 40 40 L 80 40 M 60 40 L 60 80" stroke="#ED1C24" stroke-width="6" stroke-linecap="square"/>
+                                <text x="45" y="78" font-family="sans-serif" font-weight="900" font-size="32" fill="#ED1C24">M</text>
+                            </svg>
                         </div>
-                        <h3 class="font-bold text-xs uppercase text-brandBlue mb-1">Hotline</h3>
-                        <p class="text-base font-black text-gray-800">024 32252752</p>
-                        <p class="text-xs text-gray-500">024 3558 5841</p>
+                        <div class="bg-gray-100 rounded-2xl rounded-tl-none px-5 py-3.5 max-w-lg">
+                            <p class="text-sm text-gray-700">Xin chào! Tân Mỹ Group rất hân hạnh được phục vụ quý khách. <br class="hidden sm:block">Vui lòng lựa chọn kênh liên hệ dưới đây:</p>
+                        </div>
                     </div>
-                    <div class="text-center p-4 rounded-lg bg-gray-50 hover:shadow-md transition">
-                        <div class="w-12 h-12 rounded-full bg-brandBlue flex items-center justify-center mx-auto mb-3">
-                            <i class="fa-solid fa-envelope text-white text-lg"></i>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="tel:02432252752" class="group flex items-center gap-4 bg-blue-50 hover:bg-blue-100 transition rounded-xl p-4 border border-blue-100 hover:border-blue-200">
+                            <div class="w-11 h-11 rounded-full bg-brandBlue flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition">
+                                <i class="fa-solid fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-brandBlue uppercase tracking-wide">Hotline</div>
+                                <div class="text-sm font-black text-gray-800">024 32252752</div>
+                                <div class="text-xs text-gray-500">024 3558 5841</div>
+                            </div>
+                        </a>
+                        <a href="mailto:vanphongcongty@tanmygroup.com.vn" class="group flex items-center gap-4 bg-blue-50 hover:bg-blue-100 transition rounded-xl p-4 border border-blue-100 hover:border-blue-200">
+                            <div class="w-11 h-11 rounded-full bg-brandBlue flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition">
+                                <i class="fa-solid fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-brandBlue uppercase tracking-wide">Email</div>
+                                <div class="text-xs font-medium text-gray-700 break-all">vanphongcongty@<br>tanmygroup.com.vn</div>
+                            </div>
+                        </a>
+                        <div class="group flex items-center gap-4 bg-blue-50 rounded-xl p-4 border border-blue-100">
+                            <div class="w-11 h-11 rounded-full bg-brandBlue flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-location-dot text-white"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-brandBlue uppercase tracking-wide">Trụ sở</div>
+                                <div class="text-xs text-gray-700">Số 77 Lê Văn Hưu,<br>Hai Bà Trưng, Hà Nội</div>
+                            </div>
                         </div>
-                        <h3 class="font-bold text-xs uppercase text-brandBlue mb-1">Email</h3>
-                        <p class="text-sm font-medium text-gray-700">vanphongcongty@<br>tanmygroup.com.vn</p>
                     </div>
-                    <div class="text-center p-4 rounded-lg bg-gray-50 hover:shadow-md transition">
-                        <div class="w-12 h-12 rounded-full bg-brandBlue flex items-center justify-center mx-auto mb-3">
-                            <i class="fa-solid fa-location-dot text-white text-lg"></i>
+                    <div class="mt-6 pt-5 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="text-xs text-gray-500 font-semibold">Kết nối với Tân Mỹ:</span>
+                            <a href="#" class="w-8 h-8 rounded-full bg-[#1877F2] flex items-center justify-center text-white text-xs hover:opacity-90 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-8 h-8 rounded-full bg-[#0068FF] flex items-center justify-center text-white text-xs hover:opacity-90 transition"><i class="fa-solid fa-comment-dots"></i></a>
+                            <a href="#" class="w-8 h-8 rounded-full bg-[#c4302b] flex items-center justify-center text-white text-xs hover:opacity-90 transition"><i class="fa-brands fa-youtube"></i></a>
                         </div>
-                        <h3 class="font-bold text-xs uppercase text-brandBlue mb-1">Trụ sở</h3>
-                        <p class="text-sm text-gray-700">Số 77 Lê Văn Hưu,<br>Hai Bà Trưng, Hà Nội</p>
+                        <span class="text-xs text-gray-400">Phản hồi trong vòng 24h</span>
                     </div>
                 </div>
             </div>
@@ -427,11 +462,59 @@ html = '''<!DOCTYPE html>
     </div>
 </footer>
 
+<!-- FLOATING CONTACT WIDGET -->
+<div class="fixed bottom-6 right-6 z-50">
+    <div id="floatPanel" class="float-panel hide mb-4">
+        <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 w-64 overflow-hidden">
+            <div class="bg-brandBlue p-3.5 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <svg viewBox="0 0 120 120" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="110" height="110" x="5" y="5" fill="white" stroke="#014289" stroke-width="4" rx="4"/>
+                        <path d="M 60 15 L 30 95 Q 60 80 90 95 Z" fill="#F1C40F"/>
+                        <path d="M 40 40 L 80 40 M 60 40 L 60 80" stroke="#ED1C24" stroke-width="6" stroke-linecap="square"/>
+                        <text x="45" y="78" font-family="sans-serif" font-weight="900" font-size="32" fill="#ED1C24">M</text>
+                    </svg>
+                </div>
+                <div class="text-white text-sm font-bold">Tân Mỹ hỗ trợ</div>
+                <button id="closeFloat" class="ml-auto text-white/70 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-3 space-y-2">
+                <a href="tel:02432252752" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition group">
+                    <div class="w-9 h-9 rounded-full bg-green-500 flex items-center justify-center text-white group-hover:scale-105 transition"><i class="fa-solid fa-phone"></i></div>
+                    <div><div class="text-xs text-gray-400">Gọi ngay</div><div class="text-sm font-bold text-gray-800">024 32252752</div></div>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition group">
+                    <div class="w-9 h-9 rounded-full bg-[#0068FF] flex items-center justify-center text-white group-hover:scale-105 transition"><i class="fa-brands fa-facebook-messenger"></i></div>
+                    <div><div class="text-xs text-gray-400">Chat Messenger</div><div class="text-xs font-semibold text-gray-700">Tân Mỹ Group</div></div>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition group">
+                    <div class="w-9 h-9 rounded-full bg-[#1877F2] flex items-center justify-center text-white group-hover:scale-105 transition"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div><div class="text-xs text-gray-400">Facebook</div><div class="text-xs font-semibold text-gray-700">Tân Mỹ Group</div></div>
+                </a>
+                <a href="mailto:vanphongcongty@tanmygroup.com.vn" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-blue-50 transition group">
+                    <div class="w-9 h-9 rounded-full bg-brandBlue flex items-center justify-center text-white group-hover:scale-105 transition"><i class="fa-solid fa-envelope"></i></div>
+                    <div><div class="text-xs text-gray-400">Email</div><div class="text-xs font-semibold text-gray-700">Gửi thư</div></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <button id="floatToggle" class="float-btn w-14 h-14 rounded-full bg-brandBlue shadow-xl flex items-center justify-center text-white text-2xl hover:shadow-2xl relative">
+        <i id="floatIcon" class="fa-solid fa-headset"></i>
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse"></span>
+    </button>
+</div>
+
 <script>
 AOS.init({duration:800,once:true,offset:100});
 const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',function(){navbar.classList.toggle('nav-scrolled',window.scrollY>50);});
 document.getElementById('mobile-menu-btn').addEventListener('click',function(){document.getElementById('mobile-menu').classList.toggle('hidden');});
+const floatToggle=document.getElementById('floatToggle');
+const floatPanel=document.getElementById('floatPanel');
+const floatIcon=document.getElementById('floatIcon');
+const closeFloat=document.getElementById('closeFloat');
+floatToggle.addEventListener('click',function(){floatPanel.classList.toggle('hide');floatPanel.classList.toggle('show');floatIcon.classList.toggle('fa-headset');floatIcon.classList.toggle('fa-xmark');});
+closeFloat.addEventListener('click',function(){floatPanel.classList.add('hide');floatPanel.classList.remove('show');floatIcon.classList.add('fa-headset');floatIcon.classList.remove('fa-xmark');});
 </script>
 
 </body>
