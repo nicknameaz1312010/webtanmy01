@@ -94,8 +94,8 @@ html = '''<!DOCTYPE html>
     <div class="absolute inset-0 hero-mask"></div>
 
     <div class="container mx-auto px-4 z-10 w-full grid lg:grid-cols-12 gap-8 items-stretch py-12">
-        <div class="lg:col-span-8 space-y-8 text-white" data-aos="fade-right">
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-loose drop-shadow-md">
+        <div class="lg:col-span-8 space-y-12 text-white" data-aos="fade-right">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black uppercase leading-loose drop-shadow-md">
                 TÂN MỸ <br>
                 <span class="text-yellow-400">KIẾN TẠO GIÁ TRỊ</span> <br>
                 BỀN VỮNG TỪ NHÔM VIỆT
