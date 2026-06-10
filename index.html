@@ -20,37 +20,26 @@
     <style>
         * { font-family: 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
-        .hero-overlay { background: linear-gradient(90deg, rgba(1,66,137,0.6) 0%, rgba(0,0,0,0.3) 100%); }
+        .hero-overlay { background: linear-gradient(90deg, rgba(1,66,137,0.65) 0%, rgba(0,0,0,0.25) 100%); }
         .glass-nav { background: rgba(255,255,255,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-        .pulse-ring { animation: pulseRing 2s ease-in-out infinite; }
-        @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); } 70% { box-shadow: 0 0 0 22px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+        .pulse-ring { animation: pulseRing 2.2s ease-in-out infinite; }
+        @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.55); } 70% { box-shadow: 0 0 0 24px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
         .globe-spin { animation: spin 14s linear infinite; display: inline-block; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .scroll-nav { transition: all 0.3s ease; }
         .nav-scrolled { background: #fff !important; box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
         .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.25s ease; }
+        .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.25s ease; border-radius: 12px; }
         .project-card:hover img { transform: scale(1.1); }
         .project-card img { transition: transform 0.6s ease; }
-        .process-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #d1d5db; }
-        @media (max-width: 1023px) {
-            .desktop-only { display: none !important; }
-            .mobile-only { display: block !important; }
-            .process-arrow { display: none; }
-        }
-        @media (min-width: 1024px) {
-            .mobile-only { display: none !important; }
-        }
-        .cert-grid-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1rem; text-align: center; transition: box-shadow 0.3s ease; }
-        .cert-grid-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-        .project-caption { font-size: 0.85rem; font-weight: 700; color: #1e293b; margin-top: 0.5rem; letter-spacing: 0.02em; }
         .section-header-line { width: 60px; height: 4px; background: #ED1C24; border-radius: 2px; margin: 0.75rem auto 0; }
         .footer-title-bar { width: 3px; height: 18px; background: #014289; border-radius: 2px; display: inline-block; margin-right: 8px; vertical-align: middle; }
         .news-meta { font-size: 0.7rem; color: #94a3b8; font-weight: 600; letter-spacing: 0.05em; }
-        .btn-primary-solid { background: #014289; color: #fff; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 8px; font-size: 0.8rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .btn-primary-solid:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 25px rgba(1,66,137,0.25); }
-        .btn-outline-white { border: 2px solid #fff; color: #fff; font-weight: 600; padding: 0.7rem 1.75rem; border-radius: 8px; font-size: 0.8rem; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .btn-outline-white:hover { background: #fff; color: #014289; }
+        .cert-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem 1rem; text-align: center; transition: all 0.3s ease; }
+        .cert-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-color: #cbd5e1; }
+        .process-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #d1d5db; }
+        @media (max-width: 1023px) { .desktop-only { display: none !important; } .mobile-only { display: block !important; } .process-arrow { display: none; } }
+        @media (min-width: 1024px) { .mobile-only { display: none !important; } }
     </style>
 </head>
 <body class="bg-white text-gray-900 antialiased overflow-x-hidden">
@@ -59,8 +48,7 @@
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-20">
 
-            <!-- SVG Logo -->
-            <a href="#" class="flex items-center gap-3 group">
+            <a href="#" class="flex items-center gap-3 shrink-0">
                 <svg width="130" height="40" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0" y="2" width="36" height="36" rx="6" fill="#014289"/>
                     <polygon points="8,10 18,10 13,26" fill="white"/>
@@ -70,37 +58,35 @@
                     <text x="99" y="28" font-weight="900" font-size="28" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="-0.5">MY</text>
                 </svg>
                 <div class="hidden lg:flex flex-col leading-tight border-l border-gray-300 pl-3">
-                    <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">THUONG HIEU</span>
-                    <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">UY TIN</span>
+                    <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">THƯƠNG HIỆU</span>
+                    <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">UY TÍN</span>
                 </div>
             </a>
 
-            <!-- Desktop Nav -->
-            <nav class="desktop-only flex items-center gap-1">
-                <a href="#" class="px-3 py-2 text-sm font-semibold text-brandBlue border-b-2 border-brandBlue">TRANG CHU</a>
-                <a href="#about" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">GIOI THIEU</a>
+            <nav class="desktop-only flex items-center gap-0.5">
+                <a href="#" class="px-3 py-2 text-sm font-semibold text-brandBlue border-b-2 border-brandBlue">TRANG CHỦ</a>
+                <a href="#about" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">GIỚI THIỆU</a>
                 <div class="dropdown relative px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition cursor-pointer">
-                    NHOM TAN MY <i class="fas fa-chevron-down text-[9px] ml-1"></i>
-                    <div class="dropdown-menu absolute top-full left-0 bg-white shadow-xl rounded-xl py-2 min-w-[210px] z-50 border border-gray-100">
-                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">He nhom ZAVA cao cap</a>
-                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Nhom thanh kien truc</a>
-                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Nhom dinh hinh cong nghiep</a>
+                    NHÔM TÂN MỸ <i class="fas fa-chevron-down text-[9px] ml-1"></i>
+                    <div class="dropdown-menu absolute top-full left-0 bg-white shadow-xl py-2 min-w-[210px] z-50 border border-gray-100">
+                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Hệ nhôm ZAVA cao cấp</a>
+                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Nhôm thanh kiến trúc</a>
+                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Nhôm định hình công nghiệp</a>
                     </div>
                 </div>
                 <div class="dropdown relative px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition cursor-pointer">
-                    GIA DUNG TAN MY <i class="fas fa-chevron-down text-[9px] ml-1"></i>
-                    <div class="dropdown-menu absolute top-full left-0 bg-white shadow-xl rounded-xl py-2 min-w-[210px] z-50 border border-gray-100">
-                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Bon nuoc Inox</a>
-                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Bon nhua da nang</a>
-                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Be tu hoai Septic</a>
+                    GIA DỤNG TÂN MỸ <i class="fas fa-chevron-down text-[9px] ml-1"></i>
+                    <div class="dropdown-menu absolute top-full left-0 bg-white shadow-xl py-2 min-w-[210px] z-50 border border-gray-100">
+                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Bồn nước Inox</a>
+                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Bồn nhựa đa năng</a>
+                        <a href="#" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brandBlue font-medium">Bể tự hoại Septic</a>
                     </div>
                 </div>
-                <a href="#projects" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">DU AN</a>
-                <a href="#news" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">TIN TUC</a>
-                <a href="#contact" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">LIEN HE</a>
+                <a href="#projects" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">DỰ ÁN</a>
+                <a href="#news" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">TIN TỨC</a>
+                <a href="#contact" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">LIÊN HỆ</a>
             </nav>
 
-            <!-- Right -->
             <div class="flex items-center gap-3">
                 <button class="text-gray-400 hover:text-brandBlue transition text-lg"><i class="fas fa-search"></i></button>
                 <div class="hidden lg:flex items-center border border-gray-300 rounded-md px-3 py-1 text-xs font-bold gap-1.5">
@@ -114,30 +100,29 @@
     </div>
 </header>
 
-<!-- Mobile Menu -->
 <div id="mobileMenu" class="mobile-only fixed inset-0 z-40 bg-white pt-24 px-6 py-8 hidden">
     <div class="flex flex-col gap-3">
-        <a href="#" class="text-lg font-bold text-brandBlue border-b border-gray-100 pb-3">TRANG CHU</a>
-        <a href="#about" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">GIOI THIEU</a>
+        <a href="#" class="text-lg font-bold text-brandBlue border-b border-gray-100 pb-3">TRANG CHỦ</a>
+        <a href="#about" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">GIỚI THIỆU</a>
         <div class="border-b border-gray-100 pb-3">
-            <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">NHOM TAN MY <i class="fas fa-chevron-down text-sm"></i></button>
+            <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">NHÔM TÂN MỸ <i class="fas fa-chevron-down text-sm"></i></button>
             <div class="hidden mt-2 pl-4 flex flex-col gap-1.5">
-                <a href="#" class="text-sm text-gray-500 py-1.5">He nhom ZAVA cao cap</a>
-                <a href="#" class="text-sm text-gray-500 py-1.5">Nhom thanh kien truc</a>
-                <a href="#" class="text-sm text-gray-500 py-1.5">Nhom dinh hinh cong nghiep</a>
+                <a href="#" class="text-sm text-gray-500 py-1.5">Hệ nhôm ZAVA cao cấp</a>
+                <a href="#" class="text-sm text-gray-500 py-1.5">Nhôm thanh kiến trúc</a>
+                <a href="#" class="text-sm text-gray-500 py-1.5">Nhôm định hình công nghiệp</a>
             </div>
         </div>
         <div class="border-b border-gray-100 pb-3">
-            <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">GIA DUNG TAN MY <i class="fas fa-chevron-down text-sm"></i></button>
+            <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="w-full text-left text-lg font-semibold text-gray-700 flex justify-between items-center">GIA DỤNG TÂN MỸ <i class="fas fa-chevron-down text-sm"></i></button>
             <div class="hidden mt-2 pl-4 flex flex-col gap-1.5">
-                <a href="#" class="text-sm text-gray-500 py-1.5">Bon nuoc Inox</a>
-                <a href="#" class="text-sm text-gray-500 py-1.5">Bon nhua da nang</a>
-                <a href="#" class="text-sm text-gray-500 py-1.5">Be tu hoai Septic</a>
+                <a href="#" class="text-sm text-gray-500 py-1.5">Bồn nước Inox</a>
+                <a href="#" class="text-sm text-gray-500 py-1.5">Bồn nhựa đa năng</a>
+                <a href="#" class="text-sm text-gray-500 py-1.5">Bể tự hoại Septic</a>
             </div>
         </div>
-        <a href="#projects" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">DU AN</a>
-        <a href="#news" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">TIN TUC</a>
-        <a href="#contact" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">LIEN HE</a>
+        <a href="#projects" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">DỰ ÁN</a>
+        <a href="#news" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">TIN TỨC</a>
+        <a href="#contact" class="text-lg font-semibold text-gray-700 border-b border-gray-100 pb-3">LIÊN HỆ</a>
     </div>
 </div>
 
@@ -146,29 +131,29 @@
 <!-- HERO -->
 <section class="relative min-h-screen flex items-center overflow-hidden">
     <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=85" alt="Nha may san xuat nhom" class="w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=85" alt="Nhà máy sản xuất nhôm hiện đại" class="w-full h-full object-cover">
         <div class="absolute inset-0 hero-overlay"></div>
     </div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 pt-24 lg:pt-0">
-        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between min-h-[70vh]">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 pt-28 lg:pt-0">
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between min-h-[75vh]">
             <div class="lg:w-3/5 text-center lg:text-left pt-8 lg:pt-0" data-aos="fade-right">
                 <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.05] tracking-tight">
-                    TAN MY <br>
-                    <span class="text-yellow-400">KIEN TAO GIA TRI</span> <br>
-                    BEN VUNG TU NHOM VIET
+                    TÂN MỸ <br>
+                    <span class="text-yellow-400">KIẾN TẠO GIÁ TRỊ</span> <br>
+                    BỀN VỮNG TỪ NHÔM VIỆT
                 </h1>
-                <p class="mt-6 text-base sm:text-lg lg:text-xl text-gray-200 max-w-xl leading-relaxed font-light">Nha san xuat nhom dinh hinh, san pham gia dung va giai phap vat lieu xay dung hang dau Viet Nam.</p>
+                <p class="mt-6 text-base sm:text-lg lg:text-xl text-gray-200 max-w-xl leading-relaxed font-light">Nhà sản xuất nhôm định hình, sản phẩm gia dụng và giải pháp vật liệu xây dựng hàng đầu Việt Nam.</p>
                 <div class="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
-                    <a href="#" class="btn-primary-solid text-sm tracking-wider"><i class="fas fa-industry"></i> KHAM PHA NHA MAY</a>
-                    <a href="#contact" class="btn-outline-white text-sm tracking-wider"><i class="fas fa-phone-alt"></i> LIEN HE TU VAN</a>
+                    <a href="#" class="inline-flex items-center gap-2 bg-brandBlue text-white font-bold px-8 py-3.5 rounded-lg hover:opacity-90 transition-all text-sm tracking-wider shadow-lg hover:shadow-xl hover:-translate-y-0.5"><i class="fas fa-industry"></i> KHÁM PHÁ NHÀ MÁY</a>
+                    <a href="#contact" class="inline-flex items-center gap-2 border-2 border-white text-white font-semibold px-8 py-3.5 rounded-lg hover:bg-white hover:text-brandBlue transition-all text-sm tracking-wider"><i class="fas fa-phone-alt"></i> LIÊN HỆ TƯ VẤN</a>
                 </div>
             </div>
             <div class="lg:w-2/5 flex flex-col items-center lg:items-end justify-end self-end pb-8 lg:pb-16" data-aos="fade-left">
-                <button onclick="alert('Video gioi thieu Tan My Group')" class="flex flex-col items-center gap-2 group">
+                <button onclick="alert('Video giới thiệu Tân Mỹ Group')" class="flex flex-col items-center gap-2 group">
                     <div class="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white flex items-center justify-center pulse-ring cursor-pointer group-hover:scale-105 transition shadow-2xl">
                         <i class="fas fa-play text-2xl lg:text-3xl ml-1" style="color:#014289"></i>
                     </div>
-                    <span class="text-white text-xs font-bold tracking-[0.15em] mt-2">XEM VIDEO GIOI THIEU</span>
+                    <span class="text-white text-xs font-bold tracking-[0.15em] mt-2">XEM VIDEO GIỚI THIỆU</span>
                 </button>
             </div>
         </div>
@@ -177,53 +162,53 @@
 
 <!-- METRICS -->
 <section class="relative z-20 max-w-7xl mx-auto px-4 lg:px-8 -mt-20 lg:-mt-24">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden divide-x divide-gray-100">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 bg-white rounded-2xl shadow-2xl overflow-hidden divide-x divide-gray-100">
         <div class="p-6 lg:p-8 text-center" data-aos="zoom-in" data-aos-delay="0">
             <div class="text-3xl lg:text-4xl font-black text-brandBlue">25+</div>
-            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Nam kinh nghiem</div>
+            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Năm kinh nghiệm</div>
         </div>
         <div class="p-6 lg:p-8 text-center" data-aos="zoom-in" data-aos-delay="100">
             <div class="text-3xl lg:text-4xl font-black text-brandBlue">50.000+</div>
-            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Tan nhom moi nam</div>
+            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Tấn nhôm mỗi năm</div>
         </div>
         <div class="p-6 lg:p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
             <div class="text-3xl lg:text-4xl font-black text-brandBlue">1.000+</div>
-            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Dai ly & doi tac</div>
+            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Đại lý & đối tác</div>
         </div>
         <div class="p-6 lg:p-8 text-center" data-aos="zoom-in" data-aos-delay="300">
             <div class="text-3xl lg:text-4xl font-black text-brandBlue">63</div>
-            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Tinh thanh phan phoi</div>
+            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Tỉnh thành phân phối</div>
         </div>
         <div class="p-6 lg:p-8 text-center col-span-2 md:col-span-1" data-aos="zoom-in" data-aos-delay="400">
             <div class="text-3xl lg:text-4xl font-black text-brandBlue">
                 <span class="globe-spin"><i class="fas fa-globe-asia"></i></span>
             </div>
-            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Xuat khau nhieu quoc gia</div>
+            <div class="text-xs lg:text-sm text-gray-500 font-bold mt-2 leading-tight">Xuất khẩu nhiều quốc gia</div>
         </div>
     </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="py-20 lg:py-28 bg-gray-50">
+<section id="about" class="py-20 lg:py-28 bg-[#F3F4F6]">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="text-center mb-14" data-aos="fade-up">
-            <h2 class="text-3xl lg:text-5xl font-black text-brandBlue">VE TAN MY GROUP</h2>
+            <h2 class="text-3xl lg:text-5xl font-black text-brandBlue">VỀ TÂN MỸ GROUP</h2>
             <div class="section-header-line"></div>
-            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm lg:text-base">Tien phong trong nganh nhom dinh hinh va gia dung, cam ket chat luong va doi moi khong ngung.</p>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm lg:text-base">Tiên phong trong ngành nhôm định hình và gia dụng, cam kết chất lượng và đổi mới không ngừng.</p>
         </div>
         <div class="grid lg:grid-cols-2 gap-14 items-center">
             <div data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=85" alt="Nha may Tan My" class="rounded-2xl shadow-xl w-full">
+                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=85" alt="Nhà máy Tân Mỹ" class="rounded-2xl shadow-xl w-full">
             </div>
             <div data-aos="fade-left">
-                <p class="text-gray-600 leading-relaxed mb-6 text-sm lg:text-base">Tan My Group thanh lap tu nam 1999, la mot trong nhung doanh nghiep hang dau Viet Nam trong linh vuc san xuat nhom dinh hinh, bon nuoc inox, bon nhua, be tu hoai Septic, chau rua inox va may nuoc nong nang luong mat troi.</p>
-                <p class="text-gray-600 leading-relaxed mb-8 text-sm lg:text-base">Voi he thong nha may hien dai tai Viet Nam, Tan My cung cap cac san pham chat luong cao, dap ung tieu chuan quoc te, phuc vu thi truong trong nuoc va xuat khau sang nhieu quoc gia.</p>
+                <p class="text-gray-600 leading-relaxed mb-6 text-sm lg:text-base">Tân Mỹ Group thành lập từ năm 1999, là một trong những doanh nghiệp hàng đầu Việt Nam trong lĩnh vực sản xuất nhôm định hình, bồn nước inox, bồn nhựa, bể tự hoại Septic, chậu rửa inox và máy nước nóng năng lượng mặt trời.</p>
+                <p class="text-gray-600 leading-relaxed mb-8 text-sm lg:text-base">Với hệ thống nhà máy hiện đại tại Việt Nam, Tân Mỹ cung cấp các sản phẩm chất lượng cao, đáp ứng tiêu chuẩn quốc tế, phục vụ thị trường trong nước và xuất khẩu sang nhiều quốc gia.</p>
                 <div class="grid grid-cols-3 gap-5 mb-8">
-                    <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100"><div class="text-2xl font-black text-brandBlue">25+</div><div class="text-xs text-gray-500 font-bold mt-1">Nam kinh nghiem</div></div>
-                    <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100"><div class="text-2xl font-black text-brandBlue">50K+</div><div class="text-xs text-gray-500 font-bold mt-1">Tan nhom/nam</div></div>
-                    <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100"><div class="text-2xl font-black text-brandBlue">1K+</div><div class="text-xs text-gray-500 font-bold mt-1">Dai ly toan quoc</div></div>
+                    <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100"><div class="text-2xl font-black text-brandBlue">25+</div><div class="text-xs text-gray-500 font-bold mt-1">Năm kinh nghiệm</div></div>
+                    <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100"><div class="text-2xl font-black text-brandBlue">50K+</div><div class="text-xs text-gray-500 font-bold mt-1">Tấn nhôm/năm</div></div>
+                    <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100"><div class="text-2xl font-black text-brandBlue">1K+</div><div class="text-xs text-gray-500 font-bold mt-1">Đại lý toàn quốc</div></div>
                 </div>
-                <a href="#contact" class="btn-primary-solid text-sm"><i class="fas fa-handshake"></i> Lien he hop tac</a>
+                <a href="#contact" class="inline-flex items-center gap-2 bg-brandBlue text-white font-bold px-6 py-3.5 rounded-lg hover:opacity-90 transition text-sm"><i class="fas fa-handshake"></i> Liên hệ hợp tác</a>
             </div>
         </div>
     </div>
@@ -233,37 +218,35 @@
 <section class="py-20 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-8">
-            <!-- Left -->
             <div class="relative rounded-2xl overflow-hidden" data-aos="fade-right" style="background:linear-gradient(135deg,#1e293b 0%,#111827 100%)">
                 <div class="p-8 lg:p-12 relative z-10">
-                    <div class="text-xs font-black tracking-[0.25em] text-green-400 mb-3">THUONG HIEU ZAVA</div>
-                    <h3 class="text-2xl lg:text-4xl font-black text-white mb-8 leading-tight">NHOM TAN MY - ZAVA</h3>
+                    <div class="text-xs font-black tracking-[0.25em] text-green-400 mb-3">THƯƠNG HIỆU ZAVA</div>
+                    <h3 class="text-2xl lg:text-4xl font-black text-white mb-8 leading-tight">NHÔM TÂN MỸ - ZAVA</h3>
                     <ul class="space-y-4 mb-10">
-                        <li class="flex items-start gap-3 text-gray-300 text-sm"><i class="fas fa-check-circle text-green-400 mt-0.5"></i> He nhom kien truc ZAVA cao cap</li>
-                        <li class="flex items-start gap-3 text-gray-300 text-sm"><i class="fas fa-check-circle text-green-400 mt-0.5"></i> Nhom thanh dinh hinh cong nghiep</li>
-                        <li class="flex items-start gap-3 text-gray-300 text-sm"><i class="fas fa-check-circle text-green-400 mt-0.5"></i> He nhom xay dung tieu chuan</li>
+                        <li class="flex items-start gap-3 text-gray-300 text-sm"><i class="fas fa-check-circle text-green-400 mt-0.5"></i> Hệ nhôm kiến trúc ZAVA cao cấp</li>
+                        <li class="flex items-start gap-3 text-gray-300 text-sm"><i class="fas fa-check-circle text-green-400 mt-0.5"></i> Nhôm thanh định hình công nghiệp</li>
+                        <li class="flex items-start gap-3 text-gray-300 text-sm"><i class="fas fa-check-circle text-green-400 mt-0.5"></i> Hệ nhôm xây dựng tiêu chuẩn</li>
                     </ul>
-                    <a href="#" class="inline-flex items-center gap-2 bg-white text-brandBlue font-black px-6 py-3.5 rounded-xl hover:bg-gray-100 transition text-sm">Kham pha nganh nhom <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="inline-flex items-center gap-2 bg-white text-brandBlue font-black px-6 py-3.5 rounded-xl hover:bg-gray-100 transition text-sm">Khám phá ngành nhôm <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="absolute bottom-0 right-0 w-44 h-44 lg:w-52 lg:h-52 overflow-hidden opacity-30 rounded-tl-3xl">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=85" alt="Cua kinh" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=85" alt="Cửa kính biệt thự" class="w-full h-full object-cover">
                 </div>
             </div>
-            <!-- Right -->
             <div class="relative rounded-2xl overflow-hidden" data-aos="fade-left" style="background:linear-gradient(135deg,#eff6ff 0%,#f3f4f6 100%)">
                 <div class="p-8 lg:p-12 relative z-10">
-                    <div class="text-xs font-black tracking-[0.25em] text-brandBlue mb-3">GIA DUNG CAO CAP</div>
-                    <h3 class="text-2xl lg:text-4xl font-black text-brandBlue mb-8 leading-tight">GIA DUNG TAN MY</h3>
+                    <div class="text-xs font-black tracking-[0.25em] text-brandBlue mb-3">GIA DỤNG CAO CẤP</div>
+                    <h3 class="text-2xl lg:text-4xl font-black text-brandBlue mb-8 leading-tight">GIA DỤNG TÂN MỸ</h3>
                     <ul class="space-y-4 mb-10">
-                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> Bon nuoc Inox</li>
-                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> Bon nhua da nang</li>
-                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> Be phot thong minh SEPTIC</li>
-                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> May nuoc nong NLMT</li>
+                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> Bồn nước Inox</li>
+                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> Bồn nhựa đa năng</li>
+                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> Bể phốt thông minh SEPTIC</li>
+                        <li class="flex items-start gap-3 text-gray-700 text-sm"><i class="fas fa-check-circle text-brandBlue mt-0.5"></i> Máy nước nóng NLMT</li>
                     </ul>
-                    <a href="#" class="inline-flex items-center gap-2 bg-brandBlue text-white font-black px-6 py-3.5 rounded-xl hover:opacity-90 transition text-sm">Kham pha san pham <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="inline-flex items-center gap-2 bg-brandBlue text-white font-black px-6 py-3.5 rounded-xl hover:opacity-90 transition text-sm">Khám phá sản phẩm <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="absolute bottom-0 right-0 w-40 h-40 lg:w-48 lg:h-48 overflow-hidden opacity-25 rounded-tl-3xl">
-                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=85" alt="Bon nuoc" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=85" alt="Bồn nước inox" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -271,46 +254,46 @@
 </section>
 
 <!-- PROCESS -->
-<section class="py-20 lg:py-28 bg-gray-50">
+<section class="py-20 lg:py-28 bg-[#F3F4F6]">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl lg:text-5xl font-black text-brandBlue">QUY TRINH SAN XUAT HIEN DAI</h2>
+            <h2 class="text-3xl lg:text-5xl font-black text-brandBlue">QUY TRÌNH SẢN XUẤT HIỆN ĐẠI</h2>
             <div class="section-header-line"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-0 relative">
             <div class="text-center px-3" data-aos="fade-up" data-aos-delay="0">
                 <div class="w-14 h-14 rounded-full bg-brandBlue text-white flex items-center justify-center text-xl font-black mx-auto mb-5 shadow-lg">1</div>
-                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=85" alt="Phoi nhom" class="w-full h-36 object-cover"></div>
-                <h4 class="font-black text-gray-900 mb-2 text-sm">Nguyen lieu Billet</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">Hop kim nhom nhap khau dat chat luong tieu chuan quoc te.</p>
+                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=85" alt="Phôi nhôm thô" class="w-full h-36 object-cover"></div>
+                <h4 class="font-black text-gray-900 mb-2 text-sm">Nguyên liệu Billet</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Hợp kim nhôm nhập khẩu đạt chất lượng tiêu chuẩn quốc tế.</p>
             </div>
             <div class="process-arrow"><i class="fas fa-chevron-right"></i></div>
             <div class="text-center px-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="w-14 h-14 rounded-full bg-brandBlue text-white flex items-center justify-center text-xl font-black mx-auto mb-5 shadow-lg">2</div>
-                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&q=85" alt="May dun ep" class="w-full h-36 object-cover"></div>
-                <h4 class="font-black text-gray-900 mb-2 text-sm">He thong dun ep</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">May dun ep ap luc cao tao hinh thanh nhom chinh xac.</p>
+                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&q=85" alt="Máy đùn ép" class="w-full h-36 object-cover"></div>
+                <h4 class="font-black text-gray-900 mb-2 text-sm">Hệ thống đùn ép</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Máy đùn ép áp lực cao tạo hình thanh nhôm chính xác.</p>
             </div>
             <div class="process-arrow"><i class="fas fa-chevron-right"></i></div>
             <div class="text-center px-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="w-14 h-14 rounded-full bg-brandBlue text-white flex items-center justify-center text-xl font-black mx-auto mb-5 shadow-lg">3</div>
-                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=85" alt="Son tinh dien" class="w-full h-36 object-cover"></div>
-                <h4 class="font-black text-gray-900 mb-2 text-sm">Xu ly son tinh dien</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">Phu be mat hat son bam dinh chac chan, chong oxy hoa.</p>
+                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=85" alt="Sơn tĩnh điện" class="w-full h-36 object-cover"></div>
+                <h4 class="font-black text-gray-900 mb-2 text-sm">Xử lý sơn tĩnh điện</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Phủ bề mặt hạt sơn bám dính chắc chắn, chống oxy hóa.</p>
             </div>
             <div class="process-arrow"><i class="fas fa-chevron-right"></i></div>
             <div class="text-center px-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="w-14 h-14 rounded-full bg-brandBlue text-white flex items-center justify-center text-xl font-black mx-auto mb-5 shadow-lg">4</div>
-                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&q=85" alt="Kiem dinh" class="w-full h-36 object-cover"></div>
-                <h4 class="font-black text-gray-900 mb-2 text-sm">Kiem dinh chat luong</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">Doi ngu QA/QC do dac thong so ky thuat nghiem ngat.</p>
+                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&q=85" alt="Kiểm định chất lượng" class="w-full h-36 object-cover"></div>
+                <h4 class="font-black text-gray-900 mb-2 text-sm">Kiểm định chất lượng</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Đội ngũ QA/QC đo đạc thông số kỹ thuật nghiêm ngặt.</p>
             </div>
             <div class="process-arrow"><i class="fas fa-chevron-right"></i></div>
             <div class="text-center px-3" data-aos="fade-up" data-aos-delay="400">
                 <div class="w-14 h-14 rounded-full bg-brandBlue text-white flex items-center justify-center text-xl font-black mx-auto mb-5 shadow-lg">5</div>
-                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=85" alt="Dong goi" class="w-full h-36 object-cover"></div>
-                <h4 class="font-black text-gray-900 mb-2 text-sm">Thanh pham dong goi</h4>
-                <p class="text-xs text-gray-500 leading-relaxed">Dong boc mang bao ve va luu kho xuat xuong phan phoi.</p>
+                <div class="rounded-xl overflow-hidden mb-4 shadow-md"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=85" alt="Đóng gói thành phẩm" class="w-full h-36 object-cover"></div>
+                <h4 class="font-black text-gray-900 mb-2 text-sm">Thành phẩm đóng gói</h4>
+                <p class="text-xs text-gray-500 leading-relaxed">Đóng bọc màng bảo vệ và lưu kho xuất xưởng phân phối.</p>
             </div>
         </div>
     </div>
@@ -320,28 +303,26 @@
 <section id="projects" class="py-20 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="flex flex-col lg:flex-row gap-10 lg:gap-14">
-            <!-- Left 1/3 -->
             <div class="lg:w-1/3" data-aos="fade-right">
-                <h3 class="text-2xl lg:text-3xl font-black text-brandBlue mb-4">CHUNG NHAN CHAT LUONG</h3>
-                <p class="text-sm text-gray-500 mb-8 leading-relaxed">Cac chung chi va giai thuong khang dinh chat luong san pham dich vu cua Tan My Group.</p>
+                <h3 class="text-2xl lg:text-3xl font-black text-brandBlue mb-4">CHỨNG NHẬN CHẤT LƯỢNG</h3>
+                <p class="text-sm text-gray-500 mb-8 leading-relaxed">Các chứng chỉ và giải thưởng khẳng định chất lượng sản phẩm dịch vụ của Tân Mỹ Group.</p>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="cert-grid-item"><div class="text-sm font-black text-brandBlue leading-tight">ISO<br>9001:2015</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Quan ly chat luong</div></div>
-                    <div class="cert-grid-item"><div class="text-sm font-black text-brandBlue leading-tight">QUATEST<br>3</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Kiem dinh CL</div></div>
-                    <div class="cert-grid-item"><div class="text-sm font-black text-brandBlue leading-tight">QUALI<br>COAT</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Son tinh dien</div></div>
-                    <div class="cert-grid-item"><div class="text-sm font-black text-brandBlue leading-tight">EURO<br>TIEU CHUAN</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Xuat khau Au</div></div>
+                    <div class="cert-card"><div class="text-sm font-black text-brandBlue leading-tight">ISO<br>9001:2015</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Quản lý chất lượng</div></div>
+                    <div class="cert-card"><div class="text-sm font-black text-brandBlue leading-tight">QUATEST<br>3</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Kiểm định CL</div></div>
+                    <div class="cert-card"><div class="text-sm font-black text-brandBlue leading-tight">QUALI<br>COAT</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Sơn tĩnh điện</div></div>
+                    <div class="cert-card"><div class="text-sm font-black text-brandBlue leading-tight">EURO<br>TIÊU CHUẨN</div><div class="text-[10px] text-gray-400 font-semibold mt-2">Xuất khẩu Âu</div></div>
                 </div>
             </div>
-            <!-- Right 2/3 -->
             <div class="lg:w-2/3" data-aos="fade-left">
                 <div class="flex items-center justify-between mb-8">
-                    <h3 class="text-2xl lg:text-3xl font-black text-brandBlue">DU AN TIEU BIEU</h3>
-                    <a href="#" class="text-sm font-bold text-brandBlue flex items-center gap-1 hover:underline">XEM TAT CA <i class="fas fa-arrow-right text-xs"></i></a>
+                    <h3 class="text-2xl lg:text-3xl font-black text-brandBlue">DỰ ÁN TIÊU BIỂU</h3>
+                    <a href="#" class="text-sm font-bold text-brandBlue flex items-center gap-1 hover:underline">XEM TẤT CẢ <i class="fas fa-arrow-right text-xs"></i></a>
                 </div>
                 <div class="grid grid-cols-2 gap-6">
-                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=85" alt="Vinhomes" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="project-caption">VINHOMES OCEAN PARK</div></div>
-                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=85" alt="Sunshine" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="project-caption">SUNSHINE CITY</div></div>
-                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=400&q=85" alt="FLC Quy Nhon" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="project-caption">FLC QUY NHON RESORT</div></div>
-                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=85" alt="Biet thu" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="project-caption">BIET THU CAO CAP</div></div>
+                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=85" alt="Vinhomes Ocean Park" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="text-sm font-bold text-gray-800 mt-3 tracking-wide">VINHOMES OCEAN PARK</div></div>
+                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=85" alt="Sunshine City" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="text-sm font-bold text-gray-800 mt-3 tracking-wide">SUNSHINE CITY</div></div>
+                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=400&q=85" alt="FLC Quy Nhơn Resort" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="text-sm font-bold text-gray-800 mt-3 tracking-wide">FLC QUY NHƠN RESORT</div></div>
+                    <div><div class="project-card relative rounded-xl overflow-hidden group cursor-pointer"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=85" alt="Biệt thự cao cấp" class="w-full h-48 lg:h-56 object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div><div class="text-sm font-bold text-gray-800 mt-3 tracking-wide">BIỆT THỰ CAO CẤP</div></div>
                 </div>
             </div>
         </div>
@@ -349,40 +330,37 @@
 </section>
 
 <!-- NEWS -->
-<section id="news" class="py-20 lg:py-28 bg-gray-50">
+<section id="news" class="py-20 lg:py-28 bg-[#F3F4F6]">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="flex items-center gap-5 mb-12" data-aos="fade-up">
-            <h2 class="text-3xl lg:text-4xl font-black text-brandBlue">TIN TUC NOI BAT</h2>
+            <h2 class="text-3xl lg:text-4xl font-black text-brandBlue">TIN TỨC NỔI BẬT</h2>
             <div class="flex-1 h-px bg-gray-300"></div>
         </div>
         <div class="grid lg:grid-cols-4 gap-6" data-aos="zoom-in">
-            <!-- Featured 2 cols -->
             <div class="lg:col-span-2 relative rounded-2xl overflow-hidden group cursor-pointer h-96 lg:h-[440px]">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=85" alt="Nha may" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=85" alt="Nhà máy Tân Mỹ" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
                     <span class="inline-block bg-brandRed text-white text-xs font-bold px-3 py-1.5 rounded mb-4">20/05/2024</span>
-                    <h3 class="text-white font-black text-lg lg:text-2xl leading-snug max-w-lg">Tan My khanh thanh day chuyen son tinh dien dung cong nghe cao hien dai</h3>
-                    <a href="#" class="text-white/80 text-sm font-bold mt-4 inline-flex items-center gap-1 hover:text-white transition">Xem chi tiet <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="text-white font-black text-lg lg:text-2xl leading-snug max-w-lg">Tân Mỹ khánh thành dây chuyền sơn tĩnh điện đứng công nghệ cao hiện đại</h3>
+                    <a href="#" class="text-white/80 text-sm font-bold mt-4 inline-flex items-center gap-1 hover:text-white transition">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- Small news 1 col -->
             <div class="flex flex-col gap-5">
                 <div class="bg-white rounded-xl p-5 flex gap-4 shadow-sm border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=150&q=85" alt="News" class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
-                    <div><span class="news-meta">15/05/2024</span><h4 class="text-sm font-bold text-gray-800 mt-1.5 leading-snug">Xu huong kien truc nhom kinh 2024 voi ZAVA cao cap</h4></div>
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=150&q=85" alt="Tin tức" class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
+                    <div><span class="news-meta">15/05/2024</span><h4 class="text-sm font-bold text-gray-800 mt-1.5 leading-snug">Xu hướng kiến trúc nhôm kính 2024 với ZAVA cao cấp</h4></div>
                 </div>
                 <div class="bg-white rounded-xl p-5 flex gap-4 shadow-sm border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=150&q=85" alt="News" class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
-                    <div><span class="news-meta">10/05/2024</span><h4 class="text-sm font-bold text-gray-800 mt-1.5 leading-snug">Tan My Group tham gia trien lam Vietbuild Ha Noi 2024</h4></div>
+                    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=150&q=85" alt="Tin tức" class="w-24 h-24 rounded-xl object-cover flex-shrink-0">
+                    <div><span class="news-meta">10/05/2024</span><h4 class="text-sm font-bold text-gray-800 mt-1.5 leading-snug">Tân Mỹ Group tham gia triển lãm Vietbuild Hà Nội 2024</h4></div>
                 </div>
             </div>
-            <!-- Video banner 1 col -->
             <div class="relative rounded-2xl overflow-hidden" style="background:#0b132b">
                 <div class="p-8 lg:p-10 flex flex-col items-center justify-center text-center h-full min-h-[320px]">
-                    <div class="text-white/10 text-7xl font-black leading-none mb-8 tracking-tight">TAN<br>MY</div>
-                    <h3 class="text-white font-black text-2xl leading-tight mb-6">HANH TRINH<br>PHAT TRIEN</h3>
-                    <button onclick="alert('Video Tan My Group')" class="inline-flex items-center gap-2 bg-brandRed text-white font-bold px-6 py-3.5 rounded-xl hover:opacity-90 transition text-sm tracking-wide shadow-lg"><i class="fas fa-play"></i> Xem Video</button>
+                    <div class="text-white/10 text-7xl font-black leading-none mb-8 tracking-tight">TÂN<br>MỸ</div>
+                    <h3 class="text-white font-black text-2xl leading-tight mb-6">HÀNH TRÌNH<br>PHÁT TRIỂN</h3>
+                    <button onclick="alert('Video Tân Mỹ Group')" class="inline-flex items-center gap-2 bg-brandRed text-white font-bold px-6 py-3.5 rounded-xl hover:opacity-90 transition text-sm tracking-wide shadow-lg"><i class="fas fa-play"></i> Xem Video</button>
                 </div>
             </div>
         </div>
@@ -395,7 +373,6 @@
 <footer id="contact" class="bg-[#0b132b] text-gray-400 pt-16 lg:pt-20 pb-0">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-14">
-            <!-- Col 1 -->
             <div class="lg:col-span-1">
                 <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-5">
                     <rect x="0" y="0" width="32" height="32" rx="5" fill="#014289"/>
@@ -405,8 +382,8 @@
                     <text x="38" y="24" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="white" letter-spacing="-0.3">TAN</text>
                     <text x="85" y="24" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="-0.3">MY</text>
                 </svg>
-                <p class="text-xs leading-relaxed mb-5 text-gray-500">Cong ty co phan tap doan Tan My - Doi tac tin cay cua moi nha.</p>
-                <p class="text-xs mb-2 text-gray-400"><i class="fas fa-map-marker-alt w-4 text-brandBlue mr-1"></i> KCN Thach That, Ha Noi</p>
+                <p class="text-xs leading-relaxed mb-5 text-gray-500">Công ty cổ phần tập đoàn Tân Mỹ - Đối tác tin cậy của mọi nhà.</p>
+                <p class="text-xs mb-2 text-gray-400"><i class="fas fa-map-marker-alt w-4 text-brandBlue mr-1"></i> KCN Thạch Thất, Hà Nội</p>
                 <p class="text-xs mb-2 text-gray-400"><i class="fas fa-phone w-4 text-brandBlue mr-1"></i> 0123 456 789</p>
                 <p class="text-xs mb-5 text-gray-400"><i class="fas fa-envelope w-4 text-brandBlue mr-1"></i> info@tanmygroup.com.vn</p>
                 <div class="flex gap-3">
@@ -415,21 +392,16 @@
                     <a href="#" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brandBlue transition text-sm text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <!-- Col 2 -->
-            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> VE CHUNG TOI</h4><ul class="space-y-3 text-xs"><li><a href="#" class="hover:text-white transition">Gioi thieu tong quan</a></li><li><a href="#" class="hover:text-white transition">Tam nhin - Su menh</a></li><li><a href="#" class="hover:text-white transition">Nang luc san xuat</a></li><li><a href="#" class="hover:text-white transition">So do to chuc</a></li></ul></div>
-            <!-- Col 3 -->
-            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> NHOM TAN MY</h4><ul class="space-y-3 text-xs"><li><a href="#" class="hover:text-white transition">He nhom cao cap ZAVA</a></li><li><a href="#" class="hover:text-white transition">Nhom thanh kien truc</a></li><li><a href="#" class="hover:text-white transition">Nhom dinh hinh cong nghiep</a></li><li><a href="#" class="hover:text-white transition">Catalogue san pham</a></li></ul></div>
-            <!-- Col 4 -->
-            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> GIA DUNG TAN MY</h4><ul class="space-y-3 text-xs"><li><a href="#" class="hover:text-white transition">Bon nuoc inox Tan My</a></li><li><a href="#" class="hover:text-white transition">Bon nhua da nang Tan My</a></li><li><a href="#" class="hover:text-white transition">Be tu hoai thong minh Septic</a></li><li><a href="#" class="hover:text-white transition">May nuoc nong NLMT</a></li></ul></div>
-            <!-- Col 5 -->
-            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> DANG KY THONG TIN</h4><p class="text-xs mb-4 text-gray-500">Nhan thong tin khuyen mai va san pham moi nhat tu Tan My Group.</p><div class="flex"><input type="email" placeholder="Email cua ban..." class="bg-gray-800 text-white text-xs px-4 py-3 rounded-l-xl w-full outline-none border border-gray-700 focus:border-brandBlue"><button class="bg-brandBlue text-white px-5 rounded-r-xl hover:opacity-90 transition"><i class="fas fa-paper-plane"></i></button></div></div>
+            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> VỀ CHÚNG TÔI</h4><ul class="space-y-3 text-xs"><li><a href="#" class="hover:text-white transition">Giới thiệu tổng quan</a></li><li><a href="#" class="hover:text-white transition">Tầm nhìn - Sứ mệnh</a></li><li><a href="#" class="hover:text-white transition">Năng lực sản xuất</a></li><li><a href="#" class="hover:text-white transition">Sơ đồ tổ chức</a></li></ul></div>
+            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> NHÔM TÂN MỸ</h4><ul class="space-y-3 text-xs"><li><a href="#" class="hover:text-white transition">Hệ nhôm cao cấp ZAVA</a></li><li><a href="#" class="hover:text-white transition">Nhôm thanh kiến trúc</a></li><li><a href="#" class="hover:text-white transition">Nhôm định hình công nghiệp</a></li><li><a href="#" class="hover:text-white transition">Catalogue sản phẩm</a></li></ul></div>
+            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> GIA DỤNG TÂN MỸ</h4><ul class="space-y-3 text-xs"><li><a href="#" class="hover:text-white transition">Bồn nước inox Tân Mỹ</a></li><li><a href="#" class="hover:text-white transition">Bồn nhựa đa năng Tân Mỹ</a></li><li><a href="#" class="hover:text-white transition">Bể tự hoại thông minh Septic</a></li><li><a href="#" class="hover:text-white transition">Máy nước nóng NLMT</a></li></ul></div>
+            <div><h4 class="text-white font-bold text-sm mb-6"><span class="footer-title-bar"></span> ĐĂNG KÝ THÔNG TIN</h4><p class="text-xs mb-4 text-gray-500">Nhận thông tin khuyến mãi và sản phẩm mới nhất từ Tân Mỹ Group.</p><div class="flex"><input type="email" placeholder="Email của bạn..." class="bg-gray-800 text-white text-xs px-4 py-3 rounded-l-xl w-full outline-none border border-gray-700 focus:border-brandBlue"><button class="bg-brandBlue text-white px-5 rounded-r-xl hover:opacity-90 transition"><i class="fas fa-paper-plane"></i></button></div></div>
         </div>
-        <!-- Copyright -->
         <div class="border-t border-gray-800 py-6 flex flex-col lg:flex-row items-center justify-between text-[11px] text-gray-500">
-            <p>&copy; 2024 <strong class="text-white font-semibold">Tan My Group</strong>. All rights reserved.</p>
+            <p>&copy; 2024 <strong class="text-white font-semibold">Tân Mỹ Group</strong>. All rights reserved.</p>
             <div class="flex gap-6 mt-2 lg:mt-0">
-                <a href="#" class="hover:text-white transition">Chinh sach bao mat</a>
-                <a href="#" class="hover:text-white transition">Dieu khoan su dung</a>
+                <a href="#" class="hover:text-white transition">Chính sách bảo mật</a>
+                <a href="#" class="hover:text-white transition">Điều khoản sử dụng</a>
             </div>
         </div>
     </div>
