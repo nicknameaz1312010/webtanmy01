@@ -42,7 +42,7 @@ html = '''<!DOCTYPE html>
         @media (min-width: 1024px) { .mobile-only { display: none !important; } }
     </style>
 </head>
-<body class="bg-white text-gray-900 antialiased overflow-x-hidden">
+<body class="bg-white text-gray-900 antialiased overflow-x-hidden tracking-wide">
 
 <header id="navbar" class="scroll-nav fixed top-0 left-0 w-full z-50 glass-nav">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
@@ -54,8 +54,8 @@ html = '''<!DOCTYPE html>
                     <polygon points="8,10 18,10 13,26" fill="white"/>
                     <polygon points="14,10 24,10 19,28" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="20,10 28,10 24,24" fill="white" opacity="0.9"/>
-                    <text x="44" y="28" font-weight="900" font-size="24" font-family="Inter,sans-serif" fill="#014289" letter-spacing="1">TÂN</text>
-                    <text x="102" y="28" font-weight="900" font-size="24" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="1">MỸ</text>
+                    <text x="44" y="28" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="#014289" letter-spacing="10">TÂN</text>
+                    <text x="118" y="28" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="10">MỸ</text>
                 </svg>
                 <div class="hidden lg:flex flex-col leading-tight border-l border-gray-300 pl-3">
                     <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">THƯƠNG HIỆU</span>
@@ -379,8 +379,8 @@ html = '''<!DOCTYPE html>
                     <polygon points="7,8 16,8 12,23" fill="white"/>
                     <polygon points="12,8 21,8 17,25" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="17,8 25,8 22,21" fill="white" opacity="0.9"/>
-                    <text x="38" y="24" font-weight="900" font-size="18" font-family="Inter,sans-serif" fill="white" letter-spacing="1">TÂN</text>
-                    <text x="88" y="24" font-weight="900" font-size="18" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="1">MỸ</text>
+                    <text x="38" y="24" font-weight="900" font-size="16" font-family="Inter,sans-serif" fill="white" letter-spacing="8">TÂN</text>
+                    <text x="94" y="24" font-weight="900" font-size="16" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="8">MỸ</text>
                 </svg>
                 <p class="text-xs leading-relaxed mb-5 text-gray-500">Công ty cổ phần tập đoàn Tân Mỹ - Đối tác tin cậy của mọi nhà.</p>
                 <p class="text-xs mb-2 text-gray-400"><i class="fas fa-map-marker-alt w-4 text-brandBlue mr-1"></i> KCN Thạch Thất, Hà Nội</p>
