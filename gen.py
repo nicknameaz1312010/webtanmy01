@@ -49,13 +49,13 @@ html = '''<!DOCTYPE html>
         <div class="flex items-center justify-between h-16 lg:h-20">
 
             <a href="#" class="flex items-center gap-3 shrink-0">
-                <svg width="130" height="40" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0" y="2" width="36" height="36" rx="6" fill="#014289"/>
                     <polygon points="8,10 18,10 13,26" fill="white"/>
                     <polygon points="14,10 24,10 19,28" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="20,10 28,10 24,24" fill="white" opacity="0.9"/>
-                    <text x="42" y="28" font-weight="900" font-size="28" font-family="Inter,sans-serif" fill="#014289" letter-spacing="-0.5">TÂN</text>
-                    <text x="99" y="28" font-weight="900" font-size="28" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="-0.5">MỸ</text>
+                    <text x="44" y="28" font-weight="900" font-size="24" font-family="Inter,sans-serif" fill="#014289" letter-spacing="1">TÂN</text>
+                    <text x="102" y="28" font-weight="900" font-size="24" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="1">MỸ</text>
                 </svg>
                 <div class="hidden lg:flex flex-col leading-tight border-l border-gray-300 pl-3">
                     <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">THƯƠNG HIỆU</span>
@@ -374,13 +374,13 @@ html = '''<!DOCTYPE html>
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-14">
             <div class="lg:col-span-1">
-                <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-5">
+                <svg width="130" height="36" viewBox="0 0 130 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-5">
                     <rect x="0" y="0" width="32" height="32" rx="5" fill="#014289"/>
                     <polygon points="7,8 16,8 12,23" fill="white"/>
                     <polygon points="12,8 21,8 17,25" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="17,8 25,8 22,21" fill="white" opacity="0.9"/>
-                    <text x="38" y="24" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="white" letter-spacing="-0.3">TÂN</text>
-                    <text x="85" y="24" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="-0.3">MỸ</text>
+                    <text x="38" y="24" font-weight="900" font-size="18" font-family="Inter,sans-serif" fill="white" letter-spacing="1">TÂN</text>
+                    <text x="88" y="24" font-weight="900" font-size="18" font-family="Inter,sans-serif" fill="#ED1C24" letter-spacing="1">MỸ</text>
                 </svg>
                 <p class="text-xs leading-relaxed mb-5 text-gray-500">Công ty cổ phần tập đoàn Tân Mỹ - Đối tác tin cậy của mọi nhà.</p>
                 <p class="text-xs mb-2 text-gray-400"><i class="fas fa-map-marker-alt w-4 text-brandBlue mr-1"></i> KCN Thạch Thất, Hà Nội</p>
