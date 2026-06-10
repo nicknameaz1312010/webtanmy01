@@ -482,7 +482,7 @@ html = '''<!DOCTYPE html>
         </div>
     </div>
     <button id="floatToggle" class="float-btn relative hover:scale-105 transition">
-        <img src="https://tawk.link/5865e574e7588f12124ea003/var/chat_bubble/15fad47ba0fc899390d661b427f7c12f8eb6d458" alt="Chat" class="h-auto max-w-[180px] sm:max-w-[220px]">
+        <img src="https://tawk.link/5865e574e7588f12124ea003/var/chat_bubble/15fad47ba0fc899390d661b427f7c12f8eb6d458" alt="Chat" class="h-auto w-[200px]">
     </button>
 </div>
 
