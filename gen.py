@@ -48,13 +48,13 @@ html = '''<!DOCTYPE html>
         <div class="flex items-center justify-between h-16 lg:h-20">
 
             <a href="#" class="flex items-center gap-3 shrink-0">
-                <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="170" height="40" viewBox="0 0 170 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0" y="2" width="36" height="36" rx="6" fill="#014289"/>
                     <polygon points="8,10 18,10 13,26" fill="white"/>
                     <polygon points="14,10 24,10 19,28" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="20,10 28,10 24,24" fill="white" opacity="0.9"/>
-                    <text x="44" y="28" font-weight="900" font-size="20" font-family="Inter,sans-serif" fill="#014289" style="letter-spacing:0.5em">TÂN</text>
-                    <text x="122" y="28" font-weight="900" font-size="20" font-family="Inter,sans-serif" fill="#ED1C24" style="letter-spacing:0.5em">MỸ</text>
+                    <text x="44" y="28" font-weight="900" font-size="18" font-family="Inter,sans-serif" fill="#014289" textLength="60" lengthAdjust="spacing">TÂN</text>
+                    <text x="120" y="28" font-weight="900" font-size="18" font-family="Inter,sans-serif" fill="#ED1C24" textLength="45" lengthAdjust="spacing">MỸ</text>
                 </svg>
                 <div class="hidden lg:flex flex-col leading-tight border-l border-gray-300 pl-3">
                     <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">THƯƠNG HIỆU</span>
@@ -137,7 +137,7 @@ html = '''<!DOCTYPE html>
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between min-h-[75vh]">
             <div class="lg:w-3/5 text-center lg:text-left pt-8 lg:pt-0" data-aos="fade-right">
                 <div class="space-y-8">
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.6] tracking-[0.12em]">
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[2] tracking-[0.2em]">
                         TÂN MỸ <br>
                         <span class="text-yellow-400">KIẾN TẠO GIÁ TRỊ</span> <br>
                         BỀN VỮNG TỪ NHÔM VIỆT
@@ -375,13 +375,13 @@ html = '''<!DOCTYPE html>
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-14">
             <div class="lg:col-span-1">
-                <svg width="130" height="36" viewBox="0 0 130 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-5">
+                <svg width="145" height="36" viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-5">
                     <rect x="0" y="0" width="32" height="32" rx="5" fill="#014289"/>
                     <polygon points="7,8 16,8 12,23" fill="white"/>
                     <polygon points="12,8 21,8 17,25" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="17,8 25,8 22,21" fill="white" opacity="0.9"/>
-                    <text x="38" y="24" font-weight="900" font-size="14" font-family="Inter,sans-serif" fill="white" style="letter-spacing:0.5em">TÂN</text>
-                    <text x="90" y="24" font-weight="900" font-size="14" font-family="Inter,sans-serif" fill="#ED1C24" style="letter-spacing:0.5em">MỸ</text>
+                    <text x="38" y="24" font-weight="900" font-size="14" font-family="Inter,sans-serif" fill="white" textLength="42" lengthAdjust="spacing">TÂN</text>
+                    <text x="96" y="24" font-weight="900" font-size="14" font-family="Inter,sans-serif" fill="#ED1C24" textLength="34" lengthAdjust="spacing">MỸ</text>
                 </svg>
                 <p class="text-xs leading-relaxed mb-5 text-gray-500">Công ty cổ phần tập đoàn Tân Mỹ - Đối tác tin cậy của mọi nhà.</p>
                 <p class="text-xs mb-2 text-gray-400"><i class="fas fa-map-marker-alt w-4 text-brandBlue mr-1"></i> KCN Thạch Thất, Hà Nội</p>

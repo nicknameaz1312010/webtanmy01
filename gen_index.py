@@ -66,8 +66,8 @@ html = '''<!DOCTYPE html>
       <!-- Logo -->
       <div class="flex items-center gap-3">
         <a href="#" class="flex items-baseline gap-0">
-          <span class="text-2xl lg:text-3xl font-black tracking-wide" style="color:#014289">TÂN</span>
-          <span class="text-2xl lg:text-3xl font-black tracking-wide" style="color:#ED1C24">MỸ</span>
+          <span class="text-2xl lg:text-3xl font-black tracking-widest" style="color:#014289">TÂN</span>
+          <span class="text-2xl lg:text-3xl font-black tracking-widest" style="color:#ED1C24">MỸ</span>
         </a>
         <div class="hidden lg:block w-px h-8 bg-gray-300"></div>
         <div class="hidden lg:flex flex-col leading-tight">
@@ -447,8 +447,8 @@ html = '''<!DOCTYPE html>
       <!-- Col 1 -->
       <div class="lg:col-span-1">
         <div class="flex items-baseline gap-0 mb-4">
-          <span class="text-2xl font-black tracking-wide" style="color:#014289">TÂN</span>
-          <span class="text-2xl font-black tracking-wide" style="color:#ED1C24">MỸ</span>
+          <span class="text-2xl font-black tracking-widest" style="color:#014289">TÂN</span>
+          <span class="text-2xl font-black tracking-widest" style="color:#ED1C24">MỸ</span>
           <span class="text-[10px] font-bold text-gray-500 ml-2">GROUP</span>
         </div>
         <p class="text-xs leading-relaxed mb-4">Công ty cổ phần tập đoàn Tân Mỹ - Đối tác tin cậy của mọi nhà.</p>
