@@ -53,8 +53,8 @@ html = '''<!DOCTYPE html>
                     <polygon points="8,10 18,10 13,26" fill="white"/>
                     <polygon points="14,10 24,10 19,28" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="20,10 28,10 24,24" fill="white" opacity="0.9"/>
-                    <text x="44" y="28" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="#014289" style="letter-spacing:0.35em">TÂN</text>
-                    <text x="120" y="28" font-weight="900" font-size="22" font-family="Inter,sans-serif" fill="#ED1C24" style="letter-spacing:0.35em">MỸ</text>
+                    <text x="44" y="28" font-weight="900" font-size="20" font-family="Inter,sans-serif" fill="#014289" style="letter-spacing:0.5em">TÂN</text>
+                    <text x="122" y="28" font-weight="900" font-size="20" font-family="Inter,sans-serif" fill="#ED1C24" style="letter-spacing:0.5em">MỸ</text>
                 </svg>
                 <div class="hidden lg:flex flex-col leading-tight border-l border-gray-300 pl-3">
                     <span class="text-[8px] font-bold text-gray-400 tracking-[0.2em]">THƯƠNG HIỆU</span>
@@ -62,7 +62,7 @@ html = '''<!DOCTYPE html>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center gap-0.5">
+            <nav class="hidden lg:flex items-center gap-3">
                 <a href="#" class="px-3 py-2 text-sm font-semibold text-brandBlue border-b-2 border-brandBlue">TRANG CHỦ</a>
                 <a href="#about" class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition">GIỚI THIỆU</a>
                 <div class="dropdown relative px-3 py-2 text-sm font-semibold text-gray-600 hover:text-brandBlue transition cursor-pointer">
@@ -137,7 +137,7 @@ html = '''<!DOCTYPE html>
         <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between min-h-[75vh]">
             <div class="lg:w-3/5 text-center lg:text-left pt-8 lg:pt-0" data-aos="fade-right">
                 <div class="space-y-8">
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-relaxed tracking-wider">
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.6] tracking-[0.12em]">
                         TÂN MỸ <br>
                         <span class="text-yellow-400">KIẾN TẠO GIÁ TRỊ</span> <br>
                         BỀN VỮNG TỪ NHÔM VIỆT
@@ -380,8 +380,8 @@ html = '''<!DOCTYPE html>
                     <polygon points="7,8 16,8 12,23" fill="white"/>
                     <polygon points="12,8 21,8 17,25" fill="#ED1C24" opacity="0.85"/>
                     <polygon points="17,8 25,8 22,21" fill="white" opacity="0.9"/>
-                    <text x="38" y="24" font-weight="900" font-size="16" font-family="Inter,sans-serif" fill="white" style="letter-spacing:0.35em">TÂN</text>
-                    <text x="88" y="24" font-weight="900" font-size="16" font-family="Inter,sans-serif" fill="#ED1C24" style="letter-spacing:0.35em">MỸ</text>
+                    <text x="38" y="24" font-weight="900" font-size="14" font-family="Inter,sans-serif" fill="white" style="letter-spacing:0.5em">TÂN</text>
+                    <text x="90" y="24" font-weight="900" font-size="14" font-family="Inter,sans-serif" fill="#ED1C24" style="letter-spacing:0.5em">MỸ</text>
                 </svg>
                 <p class="text-xs leading-relaxed mb-5 text-gray-500">Công ty cổ phần tập đoàn Tân Mỹ - Đối tác tin cậy của mọi nhà.</p>
                 <p class="text-xs mb-2 text-gray-400"><i class="fas fa-map-marker-alt w-4 text-brandBlue mr-1"></i> KCN Thạch Thất, Hà Nội</p>
