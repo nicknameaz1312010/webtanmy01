@@ -95,28 +95,28 @@ html = '''<!DOCTYPE html>
 
     <div class="container mx-auto px-4 z-10 w-full grid lg:grid-cols-12 gap-8 items-stretch py-12">
         <div class="lg:col-span-8 space-y-8 text-white" data-aos="fade-right">
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[1.5] drop-shadow-md">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[1.1] drop-shadow-md">
                 TÂN MỸ <br>
                 <span class="text-yellow-400">KIẾN TẠO GIÁ TRỊ</span> <br>
                 BỀN VỮNG TỪ NHÔM VIỆT
             </h1>
 
-            <p class="text-xs sm:text-sm md:text-base text-gray-100 max-w-xl font-normal leading-relaxed">
+            <p class="text-base sm:text-lg md:text-xl text-gray-100 max-w-xl font-medium leading-relaxed">
                 Nhà sản xuất nhôm định hình, sản phẩm gia dụng và giải pháp vật liệu xây dựng hàng đầu Việt Nam.
             </p>
 
             <div class="flex flex-wrap gap-4 pt-2">
-                <a href="#" class="bg-brandBlue text-white font-extrabold text-[11px] tracking-wider px-6 py-3.5 rounded shadow-lg hover:bg-blue-800 transition transform hover:-translate-y-0.5 uppercase">Khám phá nhà máy</a>
-                <a href="#contact" class="border-2 border-white text-white font-extrabold text-[11px] tracking-wider px-6 py-3.5 rounded hover:bg-white hover:text-brandBlue transition transform hover:-translate-y-0.5 uppercase">Liên hệ tư vấn</a>
+                <a href="#" class="bg-brandBlue text-white font-bold text-sm sm:text-base tracking-wider px-8 py-4 rounded shadow-lg hover:bg-blue-800 transition transform hover:-translate-y-0.5 uppercase">Khám phá nhà máy</a>
+                <a href="#contact" class="border-2 border-white text-white font-bold text-sm sm:text-base tracking-wider px-8 py-4 rounded hover:bg-white hover:text-brandBlue transition transform hover:-translate-y-0.5 uppercase">Liên hệ tư vấn</a>
             </div>
         </div>
 
         <div class="lg:col-span-4 flex justify-start lg:justify-end items-end h-full pb-6 lg:pb-0" data-aos="fade-left">
             <div class="flex items-center space-x-3 cursor-pointer group bg-black/20 p-3 rounded-full backdrop-blur-sm hover:bg-black/30 transition">
-                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg transition duration-300 group-hover:scale-105 pulse-ring">
-                    <i class="fa-solid fa-play text-sm text-brandBlue ml-0.5"></i>
+                <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg transition duration-300 group-hover:scale-105 pulse-ring">
+                    <i class="fa-solid fa-play text-lg text-brandBlue ml-0.5"></i>
                 </div>
-                <span class="text-white font-black tracking-wider text-[10px] uppercase pr-3">Xem Video Giới Thiệu</span>
+                <span class="text-white font-black tracking-wider text-xs sm:text-sm uppercase pr-3">Xem Video Giới Thiệu</span>
             </div>
         </div>
     </div>
