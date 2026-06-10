@@ -75,8 +75,14 @@ html = '''<!DOCTYPE html>
 
         <div class="flex items-center space-x-4">
             <button class="text-slate-600 hover:text-brandBlue transition"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <div class="flex items-center space-x-1 text-base border border-gray-300 px-2 py-0.5 rounded bg-gray-50">
-                <span class="cursor-pointer" title="Tiếng Việt">🇻🇳</span><span class="text-gray-300 mx-0.5 text-xs">|</span><span class="cursor-pointer" title="English">🇬🇧</span>
+            <div class="flex items-center space-x-1.5 border border-gray-300 px-2 py-0.5 rounded bg-gray-50">
+                <span class="cursor-pointer flex items-center gap-1 text-xs font-bold text-brandBlue" title="Tiếng Việt">
+                    <svg viewBox="0 0 30 20" class="w-4 h-auto rounded-sm shadow-sm"><rect width="30" height="20" fill="#DA251D"/><polygon points="15,3 17.5,10 25,10 19,14.5 21,22 15,17 9,22 11,14.5 5,10 12.5,10" fill="#FFFE00"/></svg>
+                </span>
+                <span class="text-gray-300 text-xs">|</span>
+                <span class="cursor-pointer flex items-center gap-1 text-xs font-bold text-gray-400" title="English">
+                    <svg viewBox="0 0 30 20" class="w-4 h-auto rounded-sm shadow-sm"><rect width="30" height="20" fill="#012169"/><path d="M0 0l15 10L30 0v2L17 10l13 8v2L15 12 0 20v-2l13-8L0 2z" fill="#fff"/><path d="M0 0v2l13 8L0 16v4h2l13-8 13 8h2v-4l-13-8L30 2V0h-2L15 8 2 0z" fill="#C8102E"/><path d="M12 0v12H0v2h12v6h2v-6h12v-2H14V0z" fill="#fff"/><path d="M14 0v14H0v2h14v4h2v-4h14v-2H16V0z" fill="#C8102E"/></svg>
+                </span>
             </div>
             <button id="mobile-menu-btn" class="lg:hidden text-slate-700 text-xl focus:outline-none"><i class="fa-solid fa-bars"></i></button>
         </div>
