@@ -20,9 +20,11 @@
         }
     </script>
     <script>
-        function googleTranslateElementInit(){}
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({pageLanguage:'vi',includedLanguages:'vi,en',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');
+        }
     </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script defer src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
         html { scroll-behavior: smooth; }
         .hero-mask { background: linear-gradient(90deg, rgba(1,66,137,0.7) 0%, rgba(15,23,42,0.5) 100%); }
@@ -48,6 +50,7 @@
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
+<div id="google_translate_element" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden"></div>
 
 
 <!-- KHỐI 1: NAVIGATION BAR -->
