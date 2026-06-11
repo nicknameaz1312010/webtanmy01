@@ -21,9 +21,6 @@ html = '''<!DOCTYPE html>
     </script>
     <script>
         (function(){var d=new Date();d.setTime(d.getTime()-864e5);document.cookie='googtrans=;path=/;expires='+d.toUTCString()+';domain=.'+location.hostname;document.cookie='googtrans=;path=/;expires='+d.toUTCString()})();
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage:'vi',includedLanguages:'vi,en',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');
-        }
     </script>
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
@@ -425,14 +422,13 @@ html = '''<!DOCTYPE html>
     </button>
 </div>
 
-<div id="google_translate_element" style="visibility:hidden;height:0;overflow:hidden;"></div>
+<div id="google_translate_element" style="display:none;"></div>
 
 <script>
 function changeLang(lang) {
-    var t = setInterval(function(){
-        var s = document.querySelector('.goog-te-combo');
-        if(s){ s.value=lang; s.dispatchEvent(new Event('change')); clearInterval(t); }
-    }, 300);
+    if (lang === 'en') {
+        window.location.href = 'https://translate.google.com/translate?hl=en&sl=vi&tl=en&u=' + encodeURIComponent(window.location.href);
+    }
 }
 AOS.init({duration:800,once:true,offset:100});
 const navbar=document.getElementById('navbar');
