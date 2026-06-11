@@ -19,12 +19,6 @@ html = '''<!DOCTYPE html>
             }
         }
     </script>
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage:'vi',includedLanguages:'vi,en',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');
-        }
-    </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
         html { scroll-behavior: smooth; }
         .hero-mask { background: linear-gradient(90deg, rgba(1,66,137,0.7) 0%, rgba(15,23,42,0.5) 100%); }
@@ -49,6 +43,7 @@ html = '''<!DOCTYPE html>
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
+
 
 <!-- KHỐI 1: NAVIGATION BAR -->
 <header id="navbar" class="scroll-nav fixed top-0 left-0 w-full z-50 glass-nav">
@@ -424,14 +419,15 @@ html = '''<!DOCTYPE html>
     </button>
 </div>
 
-<div id="google_translate_element" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden"></div>
-
 <script>
-function changeLang(lang) {
-    var t = setInterval(function(){
-        var s = document.querySelector('.goog-te-combo');
-        if(s){ s.value=lang; s.dispatchEvent(new Event('change')); clearInterval(t); }
-    }, 300);
+var gd=document.createElement('div');gd.id='google_translate_element';gd.style.cssText='position:absolute;left:-9999px;top:-9999px;';document.body.appendChild(gd);
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'vi',includedLanguages:'vi,en',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');}
+var gs=document.createElement('script');gs.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';document.head.appendChild(gs);
+function changeLang(lang){
+    var t=setInterval(function(){
+        var s=document.querySelector('.goog-te-combo');
+        if(s){s.value=lang;s.dispatchEvent(new Event('change'));clearInterval(t);}
+    },300);
 }
 AOS.init({duration:800,once:true,offset:100});
 const navbar=document.getElementById('navbar');
