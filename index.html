@@ -46,7 +46,6 @@
         .float-panel.hide { opacity: 0; visibility: hidden; transform: scale(0.8); }
         .skiptranslate { display: none !important; }
         body { top: 0 !important; }
-        iframe.goog-te-banner-frame { display: none !important; }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
@@ -425,17 +424,14 @@
     </button>
 </div>
 
-<div id="google_translate_element" style="position:fixed;top:-9999px;left:-9999px;z-index:-1;opacity:0;pointer-events:none"></div>
+<div id="google_translate_element" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden"></div>
 
 <script>
 function changeLang(lang) {
-    var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
-    if (lang === 'en') {
-        document.cookie = 'googtrans=/vi/en; path=/; expires=' + d.toUTCString();
-    } else {
-        document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC';
-    }
-    location.reload();
+    var t = setInterval(function(){
+        var s = document.querySelector('.goog-te-combo');
+        if(s){ s.value=lang; s.dispatchEvent(new Event('change')); clearInterval(t); }
+    }, 300);
 }
 AOS.init({duration:800,once:true,offset:100});
 const navbar=document.getElementById('navbar');
