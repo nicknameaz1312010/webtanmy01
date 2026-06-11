@@ -20,7 +20,9 @@ html = '''<!DOCTYPE html>
         }
     </script>
     <script>
-        (function(){var d=new Date();d.setTime(d.getTime()-864e5);document.cookie='googtrans=;path=/;expires='+d.toUTCString()+';domain=.'+location.hostname;document.cookie='googtrans=;path=/;expires='+d.toUTCString()})();
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage:'vi',includedLanguages:'vi,en',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');
+        }
     </script>
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
@@ -44,6 +46,7 @@ html = '''<!DOCTYPE html>
         .float-panel.hide { opacity: 0; visibility: hidden; transform: scale(0.8); }
         .skiptranslate { display: none !important; }
         body { top: 0 !important; }
+        iframe.goog-te-banner-frame { display: none !important; }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased overflow-x-hidden">
@@ -422,13 +425,17 @@ html = '''<!DOCTYPE html>
     </button>
 </div>
 
-<div id="google_translate_element" style="display:none;"></div>
+<div id="google_translate_element" style="position:fixed;top:-9999px;left:-9999px;z-index:-1;opacity:0;pointer-events:none"></div>
 
 <script>
 function changeLang(lang) {
+    var d = new Date(); d.setTime(d.getTime() + 365*24*60*60*1000);
     if (lang === 'en') {
-        window.location.href = 'https://translate.google.com/translate?hl=en&sl=vi&tl=en&u=' + encodeURIComponent(window.location.href);
+        document.cookie = 'googtrans=/vi/en; path=/; expires=' + d.toUTCString();
+    } else {
+        document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC';
     }
+    location.reload();
 }
 AOS.init({duration:800,once:true,offset:100});
 const navbar=document.getElementById('navbar');
